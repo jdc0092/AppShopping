@@ -38,7 +38,8 @@ const stylesAddProducts = StyleSheet.create({
     },
 
     AddContBtnMaxMen:{
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        flexDirection: 'column'
     },
 
     AddNameProducts: {
@@ -52,7 +53,8 @@ const stylesAddProducts = StyleSheet.create({
     AddPriceProducts: {
         color: '#5e5e5e',
         fontWeight: 500,
-        fontSize: 25
+        fontSize: 25,
+        textAlign: 'center'
     },
 
 

@@ -1,16 +1,17 @@
 import * as RN from "react";
 import React, { View, Text, Image } from "react-native";
 import stylesCss from "../../Css/styleSectionHome";
+// import styleDescriptions from "../../Css/styleDescriptions";
 
 
 export default function Products({
 
     id,
-    imgProduct,
-    nameProduct,
+    imgProducts,
+    nameProducts,
+    priceProducts,
     productsStock,
-    descriptionProduct,
-    price,
+    descriptionProducts,
     isSold,
     createAdd
 
@@ -21,13 +22,18 @@ export default function Products({
         <View style={stylesCss.contProduts}>
             {/* <Text style={stylesCss.productsImg}>{id}</Text> */}
             <View style={stylesCss.AddContProductsImg}>
-                <Image source={imgProduct} style={stylesCss.imgProducts} />
+                <Image source={imgProducts} style={stylesCss.imgProducts} />
             </View>
-            <Text style={stylesCss.productsName}>{nameProduct}</Text>
-            <Text style={stylesCss.productsPrice}>${price}</Text>
-            <Text style={stylesCss.productsPrice}>{isSold}</Text>
-            <Text style={stylesCss.productsPrice}>{descriptionProduct}</Text>
-            <Text style={stylesCss.productsPrice}>Disponible: {productsStock}</Text>
+            <View>
+                <Text style={stylesCss.productsName}>{nameProducts}</Text>
+                <Text style={stylesCss.productsPrice}>${priceProducts}</Text>
+                <Text style={stylesCss.productsPrice}>{isSold}</Text>
+                <Text style={stylesCss.productsStock}>Disponible: {productsStock}</Text>
+            </View>
+            <View>
+                <Text style={stylesCss.titleProductsDescrip}>Descriccion</Text>
+                <Text style={stylesCss.productsDescriptions}>{descriptionProducts}</Text>
+            </View>
         </View>
 
     )

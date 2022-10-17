@@ -5,7 +5,7 @@ const stylesCss = StyleSheet.create({
     contContainer: {
         padding: 15,
         alignItems: 'center',
-        backgroundColor: '#dfcad1',
+        backgroundColor: '#e5e5e5',
     },
 
     contProduts: {
@@ -17,7 +17,7 @@ const stylesCss = StyleSheet.create({
         padding: 30,
     },
 
-    AddContProductsImg:{
+    AddContProductsImg: {
         width: 280,
         height: 280,
         borderWidth: 1,
@@ -42,14 +42,38 @@ const stylesCss = StyleSheet.create({
         textTransform: 'uppercase'
 
     },
+    
+    TitleLisProducts: {
+        fontSize: 30,
+        fontWeight: 700,
+        marginBottom: 15
+    },
+
 
     productsPrice: {
-        color: '#858585',
-        fontWeight: 500,
-        fontSize: 25
+        color: '#ff0e0e',
+        fontWeight: 800,
+        fontSize: 25,
+        marginBottom: 5,
+        textAlign: 'center'
 
+    },
+
+    productsStock: {
+        fontSize: 18,
+        marginBottom: 15
+    },
+
+    titleProductsDescrip:{
+        fontWeight:'700',
+        fontSize: 15,
+        marginBottom: 5
+    },
+
+    productsDescriptions:{
+        textAlign: "center",
     }
-
+    
 
 });
 

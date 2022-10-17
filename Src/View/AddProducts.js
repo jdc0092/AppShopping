@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import * as RN from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import stylesAddProducts from "../Css/styleSectionAddProduts";
-import styleInputDescript from "../Css/styleInputDesc";
 import { database } from "../Config/Config-Fb";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native"
@@ -11,30 +10,57 @@ import { ButtonsOnclickMenos } from "../Components/AddBtnProductStock/AddBtnProd
 import { InputDescriptions } from "../Components/AddInputsPrice&Name&Descript/AddInputsPrice&Name&Descript";
 import { InputName } from "../Components/AddInputsPrice&Name&Descript/AddInputsPrice&Name&Descript";
 import { InputPrice } from "../Components/AddInputsPrice&Name&Descript/AddInputsPrice&Name&Descript";
+import { ShowStock } from "../Components/AddBtnProductStock/AddBtnProductStock";
 import AddBtnSourceImg from "../Components/AddBtnSourceImg/AddBtnSourceImg";
 import BtnPublish from "../Components/AddBtnPublish/AddBtnPublish";
+import ShowInfoProducts from "../Components/AddShowInfoProducts/AddShowInfoProducts";
 
 
 export default function AddProducts() {
 
     // Uso de la navegacion para volver atra.
     const nativeGoBack = useNavigation();
+    // --------------------------------
 
     // useState para cargar las imagenes y devolverla a la database.
     const [image, setImage] = useState('IMG');
+    // --------------------------------
 
-    const [prodStock, setProdStock] = useState(0)
 
     // Aqui tenemos nuestro objeto useState
     const [newItem, setNewItem] = useState({
-        imgProduct: "IMG",
-        productsStok: 0,
-        nameProduct: "Name Products",
-        price: 0,
-        descriptionProduct: '',
+        imgProducts: "IMG",
+        nameProducts: "Name Products",
+        priceProducts: 0,
+        productsStock: 0,
+        descriptionProducts: '',
         inSold: false,
         createAdd: new Date(),
     });
+    // --------------------------------
+
+
+    // Aumento de los estock en los articulos
+    const [prodStock, setProdStock] = useState(0)
+
+    const upIncrement = () => {
+        setProdStock(prodStock + 1)
+
+        setNewItem({
+            ...newItem, productsStock: prodStock,
+
+        })
+    }
+
+    const outIncrement = () => {
+        setProdStock(prodStock - 1)
+
+        setNewItem({
+            ...newItem, productsStock: prodStock,
+
+        })
+    }
+    // --------------------------------
 
 
     // Introdicion de informacion a la database.
@@ -42,8 +68,7 @@ export default function AddProducts() {
         await addDoc(collection(database, 'LisProducts'), newItem);
         nativeGoBack.goBack()
     }
-
-
+    // --------------------------------
 
 
     // Fucntions para agragar imagen de la galerria
@@ -60,11 +85,11 @@ export default function AddProducts() {
             setImage(result.uri);
 
             setNewItem({
-                ...newItem, imgProduct: result.uri,
+                ...newItem, imgProducts: result.uri,
             })
         }
     };
-
+    // --------------------------------
 
 
     return (
@@ -80,32 +105,41 @@ export default function AddProducts() {
                     btnImg={pickImage}
                 />
 
-
                 <RN.View style={stylesAddProducts.AddContBtnMaxMen}>
                     <RN.View>
-                        <ButtonsOnclickMax />
+                        <ButtonsOnclickMax
+                            buttonMax={upIncrement}
+                        />
                     </RN.View>
                     <RN.View>
-                        <ButtonsOnclickMenos />
+                        <ShowStock
+                            showProdStock={prodStock}
+                        />
+                    </RN.View>
+                    <RN.View>
+                        <ButtonsOnclickMenos
+                            buttonMenos={outIncrement}
+                        />
                     </RN.View>
                 </RN.View>
 
-                <RN.Text style={stylesAddProducts.AddNameProducts}>{newItem.nameProduct}</RN.Text>
-                <RN.Text style={stylesAddProducts.AddPriceProducts}>${newItem.price}</RN.Text>
-                <RN.Text style={styleInputDescript.desCription}>{newItem.descriptionProduct}</RN.Text>
-                {/* <RN.Text>${newItem.createAdd}</RN.Text> */}
+                <ShowInfoProducts
+                    showNameProduct={newItem.nameProducts}
+                    showPriceProducts={newItem.priceProducts}
+                    showDescriptProduct={newItem.descriptionProducts}
+                />
             </RN.View>
 
             <InputName
-                inputNameProduct={(text) => setNewItem({ ...newItem, nameProduct: text })}
+                inputNameProduct={(text) => setNewItem({ ...newItem, nameProducts: text })}
             />
 
             <InputPrice
-                inputPriceProduct={(textPrice) => setNewItem({ ...newItem, price: textPrice })}
+                inputPriceProduct={(textPrice) => setNewItem({ ...newItem, priceProducts: textPrice })}
             />
 
             <InputDescriptions
-                descript={(textDescritp) => setNewItem({ ...newItem, descriptionProduct: textDescritp })}
+                descript={(textDescritp) => setNewItem({ ...newItem, descriptionProducts: textDescritp })}
             />
 
             <BtnPublish

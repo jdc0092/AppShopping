@@ -6,11 +6,20 @@ import {
 } from 'react-native';
 
 
+const ShowStock =(props)=>{
+  return (
+    <View>
+      {props.showProdStock}
+    </View>
+  )
+}
+
+
 const ButtonsOnclickMax = (props) =>{
     return(
       <Button
       style={stylesProdStock.ButtonMax}
-      onPress={props.onPress}
+      onPress={props.buttonMax}
       title="+1"
       color="green"
       accessibilityLabel="Learn more about this purple button"
@@ -23,7 +32,7 @@ const ButtonsOnclickMenos = (props) =>{
     <View>
       <Button
       style={stylesProdStock.ButtonMenos}
-      onPress={props.onMenos}
+      onPress={props.buttonMenos}
       title="-1"
       color="orange"
       accessibilityLabel="Learn more about this purple button"
@@ -45,4 +54,4 @@ const ButtonsOnclear = (props) =>{
   )
 }
 
-export {ButtonsOnclickMax, ButtonsOnclickMenos, ButtonsOnclear}
+export {ButtonsOnclickMax, ButtonsOnclickMenos, ButtonsOnclear, ShowStock}
