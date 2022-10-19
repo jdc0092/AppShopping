@@ -1,5 +1,6 @@
 
 import { StyleSheet } from 'react-native';
+
 const stylesCss = StyleSheet.create({
 
     contContainer: {
@@ -14,7 +15,9 @@ const stylesCss = StyleSheet.create({
         width: '100%',
         backgroundColor: '#fff',
         alignItems: 'center',
-        padding: 30,
+        paddingLeft: 30,
+        paddingRight: 30,
+        paddingBottom: 30
     },
 
     AddContProductsImg: {
@@ -23,9 +26,12 @@ const stylesCss = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#ccc",
         marginBottom: 15,
-        marginRight: 15,
-        marginLeft: 15
 
+    },
+    
+    btnAdd: {
+        marginRight: 15,
+        color: '#4e7be3'
     },
 
     imgProducts: {
@@ -37,7 +43,7 @@ const stylesCss = StyleSheet.create({
         color: '#000',
         fontWeight: 700,
         fontSize: 23,
-        marginBottom: 10,
+        marginBottom: 5,
         textAlign: 'center',
         textTransform: 'uppercase'
 
@@ -51,7 +57,7 @@ const stylesCss = StyleSheet.create({
 
 
     productsPrice: {
-        color: '#ff0e0e',
+        color: '#912929',
         fontWeight: 800,
         fontSize: 25,
         marginBottom: 5,
@@ -61,18 +67,56 @@ const stylesCss = StyleSheet.create({
 
     productsStock: {
         fontSize: 18,
-        marginBottom: 15
+        marginBottom: 15,
+        textAlign: 'center'
+
     },
 
     titleProductsDescrip:{
         fontWeight:'700',
-        fontSize: 15,
-        marginBottom: 5
+        fontSize: 20,
+        marginBottom: 3,
+        textAlign: 'center'
     },
 
     productsDescriptions:{
         textAlign: "center",
+        color: '#181818'
+    },
+
+    btnClickIsSold:{
+        backgroundColor: "#54AEFF",
+        padding: 15,
+        width: '40%',
+        textAlign: 'center',
+        color: '#fff',
+        marginBottom: 25
+    },
+
+    btnClickIsSoldGray:{
+        backgroundColor: "#ccc",
+        padding: 15,
+        width: '40%',
+        textAlign: 'center',
+        color: '#fff',
+        marginBottom: 25
+    },
+
+
+    conOndelete:{
+        width: "100%",
+        alignItems: 'flex-end',
+        marginBottom: 15,
+        marginTop: 15,
+    },
+
+
+    onDelete: {
+        fontSize: 25,
+        marginRight: -10,
+        color: '#ff3513'
     }
+
     
 
 });

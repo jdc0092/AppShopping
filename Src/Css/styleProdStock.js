@@ -10,7 +10,7 @@ contBtns:{
   ButtonMax: {
     color: "red",
     marginBottom: 15,
-    backgroundColor: 'green',
+    alignItems: "center"
   },
   
   ButtonMenos:{

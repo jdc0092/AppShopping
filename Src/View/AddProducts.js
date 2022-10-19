@@ -5,15 +5,13 @@ import stylesAddProducts from "../Css/styleSectionAddProduts";
 import { database } from "../Config/Config-Fb";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native"
-import { ButtonsOnclickMax } from "../Components/AddBtnProductStock/AddBtnProductStock";
-import { ButtonsOnclickMenos } from "../Components/AddBtnProductStock/AddBtnProductStock";
 import { InputDescriptions } from "../Components/AddInputsPrice&Name&Descript/AddInputsPrice&Name&Descript";
 import { InputName } from "../Components/AddInputsPrice&Name&Descript/AddInputsPrice&Name&Descript";
 import { InputPrice } from "../Components/AddInputsPrice&Name&Descript/AddInputsPrice&Name&Descript";
-import { ShowStock } from "../Components/AddBtnProductStock/AddBtnProductStock";
 import AddBtnSourceImg from "../Components/AddBtnSourceImg/AddBtnSourceImg";
 import BtnPublish from "../Components/AddBtnPublish/AddBtnPublish";
 import ShowInfoProducts from "../Components/AddShowInfoProducts/AddShowInfoProducts";
+import AddInputStock from "../Components/AddInputStock/AddInputStock";
 
 
 export default function AddProducts() {
@@ -39,28 +37,6 @@ export default function AddProducts() {
     });
     // --------------------------------
 
-
-    // Aumento de los estock en los articulos
-    const [prodStock, setProdStock] = useState(0)
-
-    const upIncrement = () => {
-        setProdStock(prodStock + 1)
-
-        setNewItem({
-            ...newItem, productsStock: prodStock,
-
-        })
-    }
-
-    const outIncrement = () => {
-        setProdStock(prodStock - 1)
-
-        setNewItem({
-            ...newItem, productsStock: prodStock,
-
-        })
-    }
-    // --------------------------------
 
 
     // Introdicion de informacion a la database.
@@ -105,28 +81,13 @@ export default function AddProducts() {
                     btnImg={pickImage}
                 />
 
-                <RN.View style={stylesAddProducts.AddContBtnMaxMen}>
-                    <RN.View>
-                        <ButtonsOnclickMax
-                            buttonMax={upIncrement}
-                        />
-                    </RN.View>
-                    <RN.View>
-                        <ShowStock
-                            showProdStock={prodStock}
-                        />
-                    </RN.View>
-                    <RN.View>
-                        <ButtonsOnclickMenos
-                            buttonMenos={outIncrement}
-                        />
-                    </RN.View>
-                </RN.View>
-
                 <ShowInfoProducts
                     showNameProduct={newItem.nameProducts}
                     showPriceProducts={newItem.priceProducts}
                     showDescriptProduct={newItem.descriptionProducts}
+                />
+                <AddInputStock
+                    upIncrementStock={(stockText) => setNewItem({...newItem, productsStock: stockText})}
                 />
             </RN.View>
 

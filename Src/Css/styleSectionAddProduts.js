@@ -51,7 +51,7 @@ const stylesAddProducts = StyleSheet.create({
     },
 
     AddPriceProducts: {
-        color: '#5e5e5e',
+        color: '#ff4040',
         fontWeight: 500,
         fontSize: 25,
         textAlign: 'center'
@@ -65,6 +65,11 @@ const stylesAddProducts = StyleSheet.create({
         borderColor: "#ccc",
         padding: 10,
         marginBottom: 15
+    },
+
+    inputStock:{
+        width: 60,
+        textAlign: 'center'
     },
 
 
@@ -86,7 +91,7 @@ const stylesAddProducts = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 10,
         backgroundColor: '#CD6565',
-        height: 30,
+        height: 40,
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 1,

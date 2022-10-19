@@ -2,9 +2,10 @@ import stylesCss from "../Css/styleSectionHome";
 import React from "react";
 import * as RN from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Products from "../Components/AddProductIntrodution/AddProductIntrodution";
+import Products from "../Components/HomeProductIntrodution/HomeProductIntrodution";
 import { database } from "../Config/Config-Fb";
 import { collection, onSnapshot, orderBy, query, QuerySnapshot } from "firebase/firestore";
+import { AntDesign } from '@expo/vector-icons';
 
 export default function Home() {
 
@@ -38,11 +39,10 @@ export default function Home() {
         }, []);
 
 
-        
         // Agregando botton en la parte superior derecha para agregar product
         React.useLayoutEffect(() => {
             navigation.setOptions({
-                headerRight: () => <RN.Button title="+" onPress={() => navigation.navigate('AddProducts')} />
+                headerRight: () => <AntDesign style={stylesCss.btnAdd} name="plussquare" size={33} color="black" onPress={() => navigation.navigate('AddProducts')} />
             })
         }, [])
         // --------------------------------
@@ -54,4 +54,3 @@ export default function Home() {
         </RN.View>
     )
 }
-
