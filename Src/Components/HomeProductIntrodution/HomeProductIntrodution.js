@@ -53,10 +53,14 @@ export default function Products({
             <View style={stylesCss.AddContProductsImg}>
                 <Image source={imgProducts} style={stylesCss.imgProducts} />
             </View>
+            
             <View>
 
                 <ViewDetailsModal
                     viewDetailsProducts={()=> viewDitails}
+                    productsStock={productsStock}
+                    descriptionProducts={descriptionProducts}
+                    imgProducts={imgProducts}
                 />
             </View>
 
@@ -81,8 +85,8 @@ export default function Products({
             <View>
                 <Text style={stylesCss.productsName}>{nameProducts}</Text>
                 <Text style={stylesCss.productsPrice}>${priceProducts}</Text>
-                <Text style={stylesCss.productsPrice}>{isSold}</Text>
-                <Text style={stylesCss.productsStock}>Disponible: {productsStock}</Text>
+                {/* <Text style={stylesCss.productsPrice}>{isSold}</Text> */}
+                
             </View>
 
             {isSold ? (
@@ -98,10 +102,7 @@ export default function Products({
                 </TouchableOpacity>
             )}
 
-            <View>
-                <Text style={stylesCss.titleProductsDescrip}>Descripcion:</Text>
-                <Text style={stylesCss.productsDescriptions}>{descriptionProducts}</Text>
-            </View>
+           
         </View>
 
     )

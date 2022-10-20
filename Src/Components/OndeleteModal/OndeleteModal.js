@@ -3,6 +3,7 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View, Button } from "react-n
 import styleModal from "../../Css/styleModal";
 import { AntDesign } from '@expo/vector-icons';
 import stylesCss from "../../Css/styleSectionHome";
+import { FontAwesome } from '@expo/vector-icons';
 
 const OndeleteModal = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -18,20 +19,33 @@ const OndeleteModal = (props) => {
         }}>
 
         <View style={styleModal.centeredView}>
-          <View style={styleModal.modalView}>
+          <View style={styleModal.contModal}>
+            <View style={styleModal.modalView}>
+              <View style={styleModal.modalInfo}>
+                <View style={styleModal.closeModal}>
+                  <FontAwesome name="close" onPress={() => setModalVisible(!modalVisible)} size={30} color="red" />
+                </View>
 
-            <Text style={styleModal.modalText}>Esta seguro que dedesas Eliminar el artiulo de numero {props.idProducts}</Text>
 
-            <Button onPress={props.onDeleteProducts} title='Eliminar' />
+                <Text style={styleModal.modalText}>Estas seguro que deseas eliminar este artiulo de numero:
+                  <Text style={styleModal.idProducts}> {props.idProducts}</Text>
+                </Text>
 
-            <Button onPress={() => setModalVisible(!modalVisible)} title='Cancelar'/>
+                <View style={styleModal.conBtnModal}>
 
+                  <Button onPress={() => setModalVisible(!modalVisible)} title='Cancelar' />
+                  <Button onPress={props.onDeleteProducts} title='Eliminar' />
+                </View>
+
+
+              </View>
+            </View>
           </View>
         </View>
       </Modal>
 
       <AntDesign name="delete" style={stylesCss.onDelete} onPress={() => setModalVisible(true)} />
-      
+
     </View>
   );
 };

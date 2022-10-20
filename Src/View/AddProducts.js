@@ -11,7 +11,7 @@ import { InputPrice } from "../Components/AddInputsPrice&Name&Descript/AddInputs
 import AddBtnSourceImg from "../Components/AddBtnSourceImg/AddBtnSourceImg";
 import BtnPublish from "../Components/AddBtnPublish/AddBtnPublish";
 import ShowInfoProducts from "../Components/AddShowInfoProducts/AddShowInfoProducts";
-import AddInputStock from "../Components/AddInputStock/AddInputStock";
+// import AddInputStock from "../Components/AddInputStock/AddInputStock";
 
 
 export default function AddProducts() {
@@ -85,10 +85,9 @@ export default function AddProducts() {
                     showNameProduct={newItem.nameProducts}
                     showPriceProducts={newItem.priceProducts}
                     showDescriptProduct={newItem.descriptionProducts}
-                />
-                <AddInputStock
                     upIncrementStock={(stockText) => setNewItem({...newItem, productsStock: stockText})}
                 />
+                
             </RN.View>
 
             <InputName

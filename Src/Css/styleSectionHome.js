@@ -20,6 +20,14 @@ const stylesCss = StyleSheet.create({
         paddingBottom: 30
     },
 
+    ProductsImgModal:{
+        width: 250,
+        height: 250,
+        borderWidth: 1,
+        borderColor: "#ccc",
+        marginBottom: 15,
+    },
+
     AddContProductsImg: {
         width: 280,
         height: 280,
