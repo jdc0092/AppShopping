@@ -28,6 +28,7 @@ export default function Home() {
                     nameProducts: doc.data().nameProducts,
                     priceProducts: doc.data().priceProducts,
                     productsStock: doc.data().productsStock,
+                    selectMoneda: doc.data().selectMoneda,
                     isSold: doc.data().isSold,
                     descriptionProducts: doc.data().descriptionProducts,
                     createAdd: doc.data().createAdd

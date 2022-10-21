@@ -5,11 +5,13 @@ import stylesAddProducts from "../Css/styleSectionAddProduts";
 import { database } from "../Config/Config-Fb";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native"
-import { InputDescriptions } from "../Components/AddInputsPrice&Name&Descript/AddInputsPrice&Name&Descript";
-import { InputName } from "../Components/AddInputsPrice&Name&Descript/AddInputsPrice&Name&Descript";
-import { InputPrice } from "../Components/AddInputsPrice&Name&Descript/AddInputsPrice&Name&Descript";
+import { InputDescriptions } from "../Components/AddProductsComponents/AddProductsComponents";
+import { InputName } from "../Components/AddProductsComponents/AddProductsComponents";
+import { InputPrice } from "../Components/AddProductsComponents/AddProductsComponents";
+import { BtnPublish } from "../Components/AddProductsComponents/AddProductsComponents";
+import { SelectMoneda } from "../Components/AddProductsComponents/AddProductsComponents";
+import { InputStock } from "../Components/AddProductsComponents/AddProductsComponents";
 import AddBtnSourceImg from "../Components/AddBtnSourceImg/AddBtnSourceImg";
-import BtnPublish from "../Components/AddBtnPublish/AddBtnPublish";
 import ShowInfoProducts from "../Components/AddShowInfoProducts/AddShowInfoProducts";
 // import AddInputStock from "../Components/AddInputStock/AddInputStock";
 
@@ -32,11 +34,11 @@ export default function AddProducts() {
         priceProducts: 0,
         productsStock: 0,
         descriptionProducts: '',
+        selectMoneda: '',
         inSold: false,
         createAdd: new Date(),
     });
     // --------------------------------
-
 
 
     // Introdicion de informacion a la database.
@@ -77,18 +79,26 @@ export default function AddProducts() {
                     {image && <RN.Image source={{ uri: image }} style={stylesAddProducts.AddImgProducts} />}
                 </RN.Text>
 
+
                 <AddBtnSourceImg
                     btnImg={pickImage}
                 />
-
                 <ShowInfoProducts
                     showNameProduct={newItem.nameProducts}
                     showPriceProducts={newItem.priceProducts}
+                    moneda={newItem.selectMoneda.value}
                     showDescriptProduct={newItem.descriptionProducts}
-                    upIncrementStock={(stockText) => setNewItem({...newItem, productsStock: stockText})}
                 />
-                
             </RN.View>
+
+            <InputStock
+                upIncrementStock={(stockText) => setNewItem({...newItem, productsStock: stockText})}
+            />
+
+            <SelectMoneda 
+                // selectOptions={(moneds) =>  setMoned({...moned, selectMoneda: moneds})}
+                selectOptions={(moned) =>  setNewItem({...newItem, selectMoneda: moned})}
+            />
 
             <InputName
                 inputNameProduct={(text) => setNewItem({ ...newItem, nameProducts: text })}

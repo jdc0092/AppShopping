@@ -58,7 +58,8 @@ const stylesCss = StyleSheet.create({
     },
     
     TitleLisProducts: {
-        fontSize: 30,
+        fontSize: 28,
+        textAlign: 'center',
         fontWeight: 700,
         marginBottom: 15
     },

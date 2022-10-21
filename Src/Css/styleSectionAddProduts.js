@@ -19,7 +19,8 @@ const stylesAddProducts = StyleSheet.create({
 
 
     AddProdTitle: {
-        fontSize: 30,
+        fontSize: 28,
+        textAlign: 'center',
         marginBottom: 15,
         fontWeight: 700
     },

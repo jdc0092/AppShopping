@@ -21,6 +21,7 @@ export default function Products({
     priceProducts,
     productsStock,
     descriptionProducts,
+    selectMoneda,
     isSold,
     createAdd
 
@@ -55,12 +56,11 @@ export default function Products({
             </View>
             
             <View>
-
                 <ViewDetailsModal
+                    imgProducts={imgProducts}
                     viewDetailsProducts={()=> viewDitails}
                     productsStock={productsStock}
                     descriptionProducts={descriptionProducts}
-                    imgProducts={imgProducts}
                 />
             </View>
 
@@ -84,7 +84,7 @@ export default function Products({
 
             <View>
                 <Text style={stylesCss.productsName}>{nameProducts}</Text>
-                <Text style={stylesCss.productsPrice}>${priceProducts}</Text>
+                <Text style={stylesCss.productsPrice}>{selectMoneda.value}{priceProducts}</Text>
                 {/* <Text style={stylesCss.productsPrice}>{isSold}</Text> */}
                 
             </View>

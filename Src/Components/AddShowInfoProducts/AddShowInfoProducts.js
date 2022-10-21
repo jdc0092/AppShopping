@@ -7,14 +7,8 @@ function ShowInfoProducts(props) {
     return (
         <View>
             <Text style={stylesAddProducts.AddNameProducts}>{props.showNameProduct}</Text>
-            <Text style={stylesAddProducts.AddPriceProducts}>${props.showPriceProducts}</Text>
+            <Text style={stylesAddProducts.AddPriceProducts}>{props.moneda}{props.showPriceProducts}</Text>
             <Text style={styleInputDescript.desCription}>{props.showDescriptProduct}</Text>
-            <TextInput
-                style={stylesAddProducts.AddTextInput}
-                placeholder='0'
-                onChangeText={props.upIncrementStock}
-            />
-            
         </View>
     )
 
