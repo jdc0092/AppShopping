@@ -22,10 +22,15 @@ const stylesAddProducts = StyleSheet.create({
         fontSize: 28,
         textAlign: 'center',
         marginBottom: 15,
-        fontWeight: 700
+        // fontWeight: 700
     },
 
-
+    AddContPriceMoned:{
+        // flexDirection: 'row',
+        zIndex: 9,
+    },
+    
+    
 
     contAddImgProducts: {
         alignItems: 'center'
@@ -53,12 +58,15 @@ const stylesAddProducts = StyleSheet.create({
 
     AddPriceProducts: {
         color: '#ff4040',
-        fontWeight: 500,
+        // fontWeight: 500,
         fontSize: 25,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: 15
     },
 
-
+    AddSelectInput:{
+        marginBottom: 15
+    },
 
     AddTextInput: {
         borderRadius: 5,

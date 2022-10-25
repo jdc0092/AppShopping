@@ -1,12 +1,11 @@
 import * as RN from "react";
 import React, { View, Text, Image, TouchableOpacity } from "react-native";
 import stylesCss from "../../Css/styleSectionHome";
-import stylesAddProducts from "../../Css/styleSectionAddProduts";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { database } from "../../Config/Config-Fb";
-import { ButtonsOnclickMax } from "../HomeBtnProductStock/HomeBtnProductStock";
-import { ButtonsOnclickMenos } from "../HomeBtnProductStock/HomeBtnProductStock";
-import { ShowStock } from "../HomeBtnProductStock/HomeBtnProductStock";
+// import { ButtonsOnclickMax } from "../HomeBtnProductStock/HomeBtnProductStock";
+// import { ButtonsOnclickMenos } from "../HomeBtnProductStock/HomeBtnProductStock";
+// import { ShowStock } from "../HomeBtnProductStock/HomeBtnProductStock";
 import OndeleteModal from "../OndeleteModal/OndeleteModal";
 import ViewDetailsModal from "../ViewDetailsModal/ViewDetailsModal";
 

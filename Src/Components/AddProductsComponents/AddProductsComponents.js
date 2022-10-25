@@ -40,10 +40,10 @@ function InputDescriptions(props) {
     )
 };
 
-function InputStock (props){
-    return(
+function InputStock(props) {
+    return (
         <RN.View>
-             <RN.TextInput
+            <RN.TextInput
                 style={stylesAddProducts.AddTextInput}
                 placeholder='0'
                 onChangeText={props.upIncrementStock}
@@ -52,15 +52,19 @@ function InputStock (props){
     )
 };
 
-function SelectMoneda (props){
+function SelectMoneda(props) {
 
     const valOptions = [
         { value: 'RD$', label: 'RD$' },
         { value: 'US$', label: 'US$' }
-      ];
+    ];
 
-    return(
-        <Select options={valOptions} onChange={props.selectOptions}/>
+
+    return (
+        <RN.View style={stylesAddProducts.AddSelectInput}>
+            <RN.Text>Tipos de Drivisas:</RN.Text>
+            <Select options={valOptions} onChange={props.selectOptions} />
+        </RN.View>
     )
 };
 

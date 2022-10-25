@@ -37,16 +37,20 @@ const stylesCss = StyleSheet.create({
 
     },
     
-    btnAdd: {
-        marginRight: 15,
-        color: '#4e7be3'
-    },
-
     imgProducts: {
         width: '100%',
         height: '100%',
     },
 
+    btnAdd: {
+        // position: "fixed", 
+        bottom: 15, 
+        right: 0,
+        zIndex: 2,
+        marginRight: 15,
+        color: '#4e7be3'
+    },
+    
     productsName: {
         color: '#000',
         fontWeight: 700,
@@ -60,7 +64,7 @@ const stylesCss = StyleSheet.create({
     TitleLisProducts: {
         fontSize: 28,
         textAlign: 'center',
-        fontWeight: 700,
+        // fontWeigaht: 700,
         marginBottom: 15
     },
 

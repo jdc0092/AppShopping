@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as RN from "react-native";
+import {Text, View, Image} from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import stylesAddProducts from "../Css/styleSectionAddProduts";
 import { database } from "../Config/Config-Fb";
@@ -13,6 +13,7 @@ import { SelectMoneda } from "../Components/AddProductsComponents/AddProductsCom
 import { InputStock } from "../Components/AddProductsComponents/AddProductsComponents";
 import AddBtnSourceImg from "../Components/AddBtnSourceImg/AddBtnSourceImg";
 import ShowInfoProducts from "../Components/AddShowInfoProducts/AddShowInfoProducts";
+// import { View } from "react-native";
 // import AddInputStock from "../Components/AddInputStock/AddInputStock";
 
 
@@ -71,13 +72,13 @@ export default function AddProducts() {
 
 
     return (
-        <RN.View style={stylesAddProducts.AddContContainer}>
-            <RN.View style={stylesAddProducts.AddContInfoHead}>
-                <RN.Text style={stylesAddProducts.AddProdTitle}>Add Products</RN.Text>
+        <View style={stylesAddProducts.AddContContainer}>
+            <View style={stylesAddProducts.AddContInfoHead}>
+                <Text style={stylesAddProducts.AddProdTitle}>Add Products</Text>
 
-                <RN.Text style={stylesAddProducts.contAddImgProducts} onPress={() => pickImage()}>
-                    {image && <RN.Image source={{ uri: image }} style={stylesAddProducts.AddImgProducts} />}
-                </RN.Text>
+                <Text style={stylesAddProducts.contAddImgProducts} onPress={() => pickImage()}>
+                    {image && <Image source={{ uri: image }} style={stylesAddProducts.AddImgProducts} />}
+                </Text>
 
 
                 <AddBtnSourceImg
@@ -89,23 +90,28 @@ export default function AddProducts() {
                     moneda={newItem.selectMoneda.value}
                     showDescriptProduct={newItem.descriptionProducts}
                 />
-            </RN.View>
+            </View>
 
-            <InputStock
-                upIncrementStock={(stockText) => setNewItem({...newItem, productsStock: stockText})}
-            />
 
-            <SelectMoneda 
-                // selectOptions={(moneds) =>  setMoned({...moned, selectMoneda: moneds})}
-                selectOptions={(moned) =>  setNewItem({...newItem, selectMoneda: moned})}
-            />
 
             <InputName
                 inputNameProduct={(text) => setNewItem({ ...newItem, nameProducts: text })}
             />
 
-            <InputPrice
-                inputPriceProduct={(textPrice) => setNewItem({ ...newItem, priceProducts: textPrice })}
+            <View style={stylesAddProducts.AddContPriceMoned}>
+                <SelectMoneda
+                    selectOptions={(moned) => setNewItem({ ...newItem, selectMoneda: moned })}
+                />
+            </View>
+            
+            <View>
+                <InputPrice
+                    inputPriceProduct={(textPrice) => setNewItem({ ...newItem, priceProducts: textPrice })}
+                />
+            </View>
+
+            <InputStock
+                upIncrementStock={(stockText) => setNewItem({ ...newItem, productsStock: stockText })}
             />
 
             <InputDescriptions
@@ -116,6 +122,6 @@ export default function AddProducts() {
                 btnPublish={onSend}
             />
 
-        </RN.View>
+        </View>
     )
 }
