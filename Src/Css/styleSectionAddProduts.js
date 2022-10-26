@@ -22,25 +22,25 @@ const StylesAddProducts = StyleSheet.create({
         fontSize: 28,
         textAlign: 'center',
         marginBottom: 15,
-        // fontWeight: 700
+        fontWeight: '700'
     },
 
     AddContPriceMoned:{
         // flexDirection: 'row',
-        zIndex: 9,
+        // zIndex: 9,
     },
     
     
 
     contAddImgProducts: {
-        alignItems: 'center'
+        borderColor: "#ccc",
+        alignItems: 'center',
+        borderWidth: 1,
     },
     
     AddImgProducts: {
         width: 280,
         height: 280,
-        borderWidth: 1,
-        borderColor: "#ccc",
     },
 
     AddContBtnMaxMen:{
@@ -52,13 +52,13 @@ const StylesAddProducts = StyleSheet.create({
         color: '#000',
         fontSize: 20,
         marginBottom: 10,
-        textTransform: 'uppercase',
+        textTransform: 'capitalize',
         textAlign: 'center',
     },
 
     AddPriceProducts: {
         color: '#ff4040',
-        // fontWeight: 500,
+        fontWeight: '500',
         fontSize: 25,
         textAlign: 'center',
         marginBottom: 15
@@ -97,8 +97,8 @@ const StylesAddProducts = StyleSheet.create({
 
 
     AddImgBtn: {
-        paddingTop: 10,
-        paddingBottom: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
         backgroundColor: '#CD6565',
         height: 40,
         alignItems: 'center',

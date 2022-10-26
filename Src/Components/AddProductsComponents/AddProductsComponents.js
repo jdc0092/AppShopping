@@ -48,23 +48,8 @@ const InputStock = (props) => {
 };
 
 const SelectMoneda = (props) => {
-    // const countries = ["RD$", "US$"]
-
-    // const [selected, setSelected] = useState("");
-    // const data = [
-    //     {value: 'RD$', name: 'RD$'},
-    //     {value: 'US$', name: 'US$'}
-    // ];
-
-    // console.log(data)
-
-    // const data = [
-    //     { label: 'RD$', value: 'RD$' },
-    //     { label: 'US$', value: 'US$' },
-
-    // ];
-
-    const [value, setValue] = useState(null);
+ 
+    const [valueOpt, setValueOpt] = useState(null);
 
     const valOptions = [
         { value: 'RD$', label: 'RD$' },
@@ -88,10 +73,10 @@ const SelectMoneda = (props) => {
                 valueField="value"
                 placeholder="Tipos de Drivisas:"
                 searchPlaceholder="Search..."
-                value={value}
-                onChangeText={props.selectOptions}
-                onChange={item => {
-                    setValue(item.value);
+                value={valueOpt}
+                onChange={props.selectOptions}
+                onChangeText={item => {
+                    setValueOpt(item.value);
 
                 }}
             // renderLeftIcon={() => (
@@ -99,36 +84,6 @@ const SelectMoneda = (props) => {
             // )}
             />
 
-            {/* <TextInput
-            value={value}
-                onChangeText={props.selectOptions}
-                placeholder='sss'
-            /> */}
-
-
-            {/* <Select options={valOptions} onChange={props.selectOptions} /> */}
-
-
-            {/* <SelectList
-                setSelected={setSelected}
-                data={data}
-                onSelect={() => alert(selected)}
-            /> */}
-            {/* <SelectDropdown
-                data={countries}
-                onChange={props.selectOptions}
-                onSelect={(selectedItem) => {
-                    console.log(selectedItem)
-                }}
-
-                buttonTextAfterSelection={(selectedItem) => {
-                    return selectedItem
-                }}
-
-                rowTextForSelection={(item) => {
-                    return item
-                }}
-            /> */}
         </View>
     )
 };

@@ -55,11 +55,11 @@ export default function Home() {
                 <SafeAreaView>
                     <ScrollView>
                         {listProducts.map(prod => <Products key={prod.id} {...prod} />)}
+                        <Entypo style={StylesCss.btnAdd} name="circle-with-plus" size={50} color="black" onPress={() => navigation.navigate('AddProducts')} />
                     </ScrollView>
                 </SafeAreaView>
 
 
-                <Entypo style={StylesCss.btnAdd} name="circle-with-plus" size={50} color="black" onPress={() => navigation.navigate('AddProducts')} />
             </View>
         </View>
     )

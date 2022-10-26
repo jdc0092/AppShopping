@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const StyleModal = StyleSheet.create({
   centeredView: {
-    flex: 1,
+    // flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -40,7 +40,7 @@ const StyleModal = StyleSheet.create({
   },
 
   idProducts: {
-    fontWeight: 700
+    fontWeight: '700'
   },
 
   modalInfo: {

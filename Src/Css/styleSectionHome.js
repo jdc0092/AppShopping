@@ -44,34 +44,35 @@ const StylesCss = StyleSheet.create({
 
     btnAdd: {
         // position: "fixed", 
-        bottom: 15, 
-        right: 0,
-        zIndex: 2,
-        marginRight: 15,
+        // bottom: 15, 
+        // right: 0,
+        // zIndex: 2,
+        // marginRight: 15,
+        textAlign: 'center',
         color: '#4e7be3'
     },
     
     productsName: {
         color: '#000',
-        // fontWeight: 700,
+        fontWeight: '700',
         fontSize: 23,
         marginBottom: 5,
         textAlign: 'center',
-        textTransform: 'uppercase'
+        textTransform: 'capitalize'
 
     },
     
     TitleLisProducts: {
         fontSize: 28,
         textAlign: 'center',
-        // fontWeigaht: 700,
+        fontWeight: '700',
         marginBottom: 15
     },
 
 
     productsPrice: {
-        color: '#912929',
-        // fontWeight: 800,
+        color: '#FF3813',
+        fontWeight: '800',
         fontSize: 25,
         marginBottom: 5,
         textAlign: 'center'
@@ -86,7 +87,7 @@ const StylesCss = StyleSheet.create({
     },
 
     titleProductsDescrip:{
-        // fontWeight:'700',
+        fontWeight: '700',
         fontSize: 20,
         marginBottom: 3,
         textAlign: 'center'
@@ -127,7 +128,7 @@ const StylesCss = StyleSheet.create({
     onDelete: {
         fontSize: 25,
         marginRight: -10,
-        color: '#ff3513'
+        color: '#3c3c3c'
     }
 
     

@@ -26,6 +26,8 @@ export default function Products({
 
 }) {
 
+    console.log(imgProducts)
+
     // Function para marcar como vendido los productos.
     const onEdit = () => {
         const docRef = doc(database, 'LisProducts', id)
@@ -51,13 +53,13 @@ export default function Products({
             </View>
 
             <View style={StylesCss.AddContProductsImg}>
-                <Image source={imgProducts} style={StylesCss.imgProducts} />
+                <Image source={{uri: imgProducts}} style={StylesCss.imgProducts} />
             </View>
             
             <View>
                 <ViewDetailsModal
                     imgProducts={imgProducts}
-                    viewDetailsProducts={()=> viewDitails}
+                    viewDetailsProducts={() => viewDitails}
                     productsStock={productsStock}
                     descriptionProducts={descriptionProducts}
                 />

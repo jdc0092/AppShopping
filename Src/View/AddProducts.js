@@ -88,7 +88,7 @@ export default function AddProducts() {
                         <ShowInfoProducts
                             showNameProduct={newItem.nameProducts}
                             showPriceProducts={newItem.priceProducts}
-                            moneda={newItem.selectMoneda}
+                            moneda={newItem.selectMoneda.value}
                             showDescriptProduct={newItem.descriptionProducts}
                         />
                     </View>
