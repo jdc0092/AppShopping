@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const stylesProdStock = StyleSheet.create({
+const StylesProdStock = StyleSheet.create({
 
 contBtns:{
     flsexDirection: "row"
@@ -23,4 +23,4 @@ contBtns:{
 
 });
 
-export default stylesProdStock;
+export default StylesProdStock;

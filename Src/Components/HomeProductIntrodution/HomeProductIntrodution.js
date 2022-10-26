@@ -1,6 +1,6 @@
 import * as RN from "react";
 import React, { View, Text, Image, TouchableOpacity } from "react-native";
-import stylesCss from "../../Css/styleSectionHome";
+import StylesCss from "../../Css/styleSectionHome";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { database } from "../../Config/Config-Fb";
 // import { ButtonsOnclickMax } from "../HomeBtnProductStock/HomeBtnProductStock";
@@ -42,16 +42,16 @@ export default function Products({
 
     return (
 
-        <View style={stylesCss.contProduts}>
-            <View style={stylesCss.conOndelete}>
+        <View style={StylesCss.contProduts}>
+            <View style={StylesCss.conOndelete}>
                 <OndeleteModal
                     idProducts={id}
                     onDeleteProducts={onDelete}
                 />
             </View>
 
-            <View style={stylesCss.AddContProductsImg}>
-                <Image source={imgProducts} style={stylesCss.imgProducts} />
+            <View style={StylesCss.AddContProductsImg}>
+                <Image source={imgProducts} style={StylesCss.imgProducts} />
             </View>
             
             <View>
@@ -82,19 +82,19 @@ export default function Products({
             </RN.View> */}
 
             <View>
-                <Text style={stylesCss.productsName}>{nameProducts}</Text>
-                <Text style={stylesCss.productsPrice}>{selectMoneda.value}{priceProducts}</Text>
-                {/* <Text style={stylesCss.productsPrice}>{isSold}</Text> */}
+                <Text style={StylesCss.productsName}>{nameProducts}</Text>
+                <Text style={StylesCss.productsPrice}>{selectMoneda.value}{priceProducts}</Text>
+                {/* <Text style={StylesCss.productsPrice}>{isSold}</Text> */}
                 
             </View>
 
             {isSold ? (
-                <TouchableOpacity style={stylesCss.btnClickIsSoldGray}>
+                <TouchableOpacity style={StylesCss.btnClickIsSoldGray}>
                     <Text>Click</Text>
                 </TouchableOpacity>
 
             ) : (
-                <TouchableOpacity style={stylesCss.btnClickIsSold}
+                <TouchableOpacity style={StylesCss.btnClickIsSold}
                     onPress={onEdit}
                 >
                     <Text>Click</Text>

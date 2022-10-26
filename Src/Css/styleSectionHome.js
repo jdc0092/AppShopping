@@ -1,7 +1,7 @@
 
 import { StyleSheet } from 'react-native';
 
-const stylesCss = StyleSheet.create({
+const StylesCss = StyleSheet.create({
 
     contContainer: {
         padding: 15,
@@ -53,7 +53,7 @@ const stylesCss = StyleSheet.create({
     
     productsName: {
         color: '#000',
-        fontWeight: 700,
+        // fontWeight: 700,
         fontSize: 23,
         marginBottom: 5,
         textAlign: 'center',
@@ -71,7 +71,7 @@ const stylesCss = StyleSheet.create({
 
     productsPrice: {
         color: '#912929',
-        fontWeight: 800,
+        // fontWeight: 800,
         fontSize: 25,
         marginBottom: 5,
         textAlign: 'center'
@@ -86,7 +86,7 @@ const stylesCss = StyleSheet.create({
     },
 
     titleProductsDescrip:{
-        fontWeight:'700',
+        // fontWeight:'700',
         fontSize: 20,
         marginBottom: 3,
         textAlign: 'center'
@@ -134,4 +134,4 @@ const stylesCss = StyleSheet.create({
 
 });
 
-export default stylesCss;
+export default StylesCss;

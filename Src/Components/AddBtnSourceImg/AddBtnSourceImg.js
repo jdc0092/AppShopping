@@ -1,16 +1,16 @@
 
 import * as RN from 'react-native'
-import stylesAddProducts from '../../Css/styleSectionAddProduts';
+import StylesAddProducts from '../../Css/styleSectionAddProduts';
 import { Feather } from '@expo/vector-icons';
 
-function AddBtnSourceImg(props) {
+const AddBtnSourceImg = (props) =>{
     return (
-        <RN.View style={stylesAddProducts.AddImgContBtn}>
+        <RN.View style={StylesAddProducts.AddImgContBtn}>
             <RN.TouchableHighlight
                 onPress={props.btnImg}
-                style={stylesAddProducts.AddImgBtn}
+                style={StylesAddProducts.AddImgBtn}
                 underlayColor='#787878'>
-                <RN.Text style={stylesAddProducts.AddBtnMenuText}>
+                <RN.Text style={StylesAddProducts.AddBtnMenuText}>
                     <Feather name="image" size={30} color="white" />
                 </RN.Text>
             </RN.TouchableHighlight>

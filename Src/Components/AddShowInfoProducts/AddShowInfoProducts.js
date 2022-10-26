@@ -1,14 +1,13 @@
-import stylesAddProducts from "../../Css/styleSectionAddProduts";
-import styleInputDescript from "../../Css/styleInputDesc";
-import React, {Text, View, TextInput} from "react-native";
+import StylesAddProducts from "../../Css/styleSectionAddProduts";
+import StyleInputDescript from "../../Css/styleInputDesc";
+import React, {Text, View} from "react-native";
 
-
-function ShowInfoProducts(props) {
+const ShowInfoProducts = (props) => {
     return (
         <View>
-            <Text style={stylesAddProducts.AddNameProducts}>{props.showNameProduct}</Text>
-            <Text style={stylesAddProducts.AddPriceProducts}>{props.moneda}{props.showPriceProducts}</Text>
-            <Text style={styleInputDescript.desCription}>{props.showDescriptProduct}</Text>
+            <Text style={StylesAddProducts.AddNameProducts}>{props.showNameProduct}</Text>
+            <Text style={StylesAddProducts.AddPriceProducts}>{props.moneda}{props.showPriceProducts}</Text>
+            <Text style={StyleInputDescript.desCription}>{props.showDescriptProduct}</Text>
         </View>
     )
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import {Text, View, Image} from "react-native";
+import { Text, View, Image, SafeAreaView, ScrollView } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
-import stylesAddProducts from "../Css/styleSectionAddProduts";
+import StylesAddProducts from "../Css/styleSectionAddProduts";
 import { database } from "../Config/Config-Fb";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native"
@@ -13,8 +13,6 @@ import { SelectMoneda } from "../Components/AddProductsComponents/AddProductsCom
 import { InputStock } from "../Components/AddProductsComponents/AddProductsComponents";
 import AddBtnSourceImg from "../Components/AddBtnSourceImg/AddBtnSourceImg";
 import ShowInfoProducts from "../Components/AddShowInfoProducts/AddShowInfoProducts";
-// import { View } from "react-native";
-// import AddInputStock from "../Components/AddInputStock/AddInputStock";
 
 
 export default function AddProducts() {
@@ -72,56 +70,60 @@ export default function AddProducts() {
 
 
     return (
-        <View style={stylesAddProducts.AddContContainer}>
-            <View style={stylesAddProducts.AddContInfoHead}>
-                <Text style={stylesAddProducts.AddProdTitle}>Add Products</Text>
+        <View style={StylesAddProducts.AddContContainer}>
+            <SafeAreaView>
+                <ScrollView>
+                    <View style={StylesAddProducts.AddContInfoHead}>
+                        <Text style={StylesAddProducts.AddProdTitle}>Add Products</Text>
 
-                <Text style={stylesAddProducts.contAddImgProducts} onPress={() => pickImage()}>
-                    {image && <Image source={{ uri: image }} style={stylesAddProducts.AddImgProducts} />}
-                </Text>
-
-
-                <AddBtnSourceImg
-                    btnImg={pickImage}
-                />
-                <ShowInfoProducts
-                    showNameProduct={newItem.nameProducts}
-                    showPriceProducts={newItem.priceProducts}
-                    moneda={newItem.selectMoneda.value}
-                    showDescriptProduct={newItem.descriptionProducts}
-                />
-            </View>
+                        <Text style={StylesAddProducts.contAddImgProducts} onPress={() => pickImage()}>
+                            {image && <Image source={{ uri: image }} style={StylesAddProducts.AddImgProducts} />}
+                        </Text>
 
 
+                        <AddBtnSourceImg
+                            btnImg={pickImage}
+                        />
 
-            <InputName
-                inputNameProduct={(text) => setNewItem({ ...newItem, nameProducts: text })}
-            />
+                        <ShowInfoProducts
+                            showNameProduct={newItem.nameProducts}
+                            showPriceProducts={newItem.priceProducts}
+                            moneda={newItem.selectMoneda}
+                            showDescriptProduct={newItem.descriptionProducts}
+                        />
+                    </View>
 
-            <View style={stylesAddProducts.AddContPriceMoned}>
-                <SelectMoneda
-                    selectOptions={(moned) => setNewItem({ ...newItem, selectMoneda: moned })}
-                />
-            </View>
-            
-            <View>
-                <InputPrice
-                    inputPriceProduct={(textPrice) => setNewItem({ ...newItem, priceProducts: textPrice })}
-                />
-            </View>
 
-            <InputStock
-                upIncrementStock={(stockText) => setNewItem({ ...newItem, productsStock: stockText })}
-            />
 
-            <InputDescriptions
-                descript={(textDescritp) => setNewItem({ ...newItem, descriptionProducts: textDescritp })}
-            />
+                    <InputName
+                        inputNameProduct={(text) => setNewItem({ ...newItem, nameProducts: text })}
+                    />
 
-            <BtnPublish
-                btnPublish={onSend}
-            />
+                    <View style={StylesAddProducts.AddContPriceMoned}>
+                        <SelectMoneda
+                            selectOptions={(moned) => setNewItem({ ...newItem, selectMoneda: moned })}
+                        />
+                    </View>
 
+                    <View>
+                        <InputPrice
+                            inputPriceProduct={(textPrice) => setNewItem({ ...newItem, priceProducts: textPrice })}
+                        />
+                    </View>
+
+                    <InputStock
+                        upIncrementStock={(stockText) => setNewItem({ ...newItem, productsStock: stockText })}
+                    />
+
+                    <InputDescriptions
+                        descript={(textDescritp) => setNewItem({ ...newItem, descriptionProducts: textDescritp })}
+                    />
+
+                    <BtnPublish
+                        btnPublish={onSend}
+                    />
+                </ScrollView>
+            </SafeAreaView>
         </View>
     )
 }

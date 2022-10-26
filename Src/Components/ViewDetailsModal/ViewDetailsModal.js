@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { Alert, Modal, Text, View, Image } from "react-native";
-import styleModal from "../../Css/styleModal";
-import stylesCss from "../../Css/styleSectionHome";
+import StyleModal from "../../Css/styleModal";
+import StylesCss from "../../Css/styleSectionHome";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
 const ViewDetailsModal = (props) => {
   
   const [modalVisible, setModalVisible] = useState(false);
+  
   return (
-    <View style={styleModal.centeredView}>
+    <View style={StyleModal.centeredView}>
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -19,26 +20,26 @@ const ViewDetailsModal = (props) => {
           setModalVisible(!modalVisible);
         }}>
 
-        <View style={styleModal.centeredView}>
-          <View style={styleModal.contModal}>
-            <View style={styleModal.modalView}>
-              <View style={styleModal.modalInfo}>
-                <View style={styleModal.closeModal}>
+        <View style={StyleModal.centeredView}>
+          <View style={StyleModal.contModal}>
+            <View style={StyleModal.modalView}>
+              <View style={StyleModal.modalInfo}>
+                <View style={StyleModal.closeModal}>
                   <FontAwesome name="close" onPress={() => setModalVisible(!modalVisible)} size={30} color="red" />
                 </View>
 
-                <Text style={styleModal.modalText}>Detalle del producto</Text>
+                <Text style={StyleModal.modalText}>Detalle del producto</Text>
 
-                <View style={stylesCss.ProductsImgModal}>
-                  <Image source={props.imgProducts} style={stylesCss.imgProducts} />
+                <View style={StylesCss.ProductsImgModal}>
+                  <Image source={props.imgProducts} style={StylesCss.imgProducts} />
                 </View>
 
-                <Text style={stylesCss.productsStock}>Disponible: {props.productsStock}</Text>
-                <Text style={stylesCss.productsPrice}>{props.isSold}</Text>
+                <Text style={StylesCss.productsStock}>Disponible: {props.productsStock}</Text>
+                <Text style={StylesCss.productsPrice}>{props.isSold}</Text>
 
                 <View>
-                  <Text style={stylesCss.titleProductsDescrip}>Descripcion:</Text>
-                  <Text style={stylesCss.productsDescriptions}>{props.descriptionProducts}</Text>
+                  <Text style={StylesCss.titleProductsDescrip}>Descripcion:</Text>
+                  <Text style={StylesCss.productsDescriptions}>{props.descriptionProducts}</Text>
                 </View>
 
               </View>

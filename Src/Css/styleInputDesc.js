@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 
-const styleInputDescript = StyleSheet.create({
+const StyleInputDescript = StyleSheet.create({
 
     InputDesc:{
         borderColor: "#ccc",
@@ -19,4 +19,4 @@ const styleInputDescript = StyleSheet.create({
     }
 })
 
-export default styleInputDescript;
+export default StyleInputDescript;

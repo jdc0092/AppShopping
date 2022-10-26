@@ -1,5 +1,5 @@
 import React from 'react';
-import stylesProdStock from '../../Css/styleProdStock';
+import StylesProdStock from '../../Css/styleProdStock';
 import { View, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -14,7 +14,7 @@ const ShowStock = (props) => {
 const ButtonsOnclickMax = (props) => {
   return (
     <View>
-      <TouchableOpacity onPress={props.buttonMax} style={stylesProdStock.ButtonMax}>
+      <TouchableOpacity onPress={props.buttonMax} style={StylesProdStock.ButtonMax}>
         <AntDesign name="plus" size={24} color="#000" />
       </TouchableOpacity>
     </View>
@@ -24,7 +24,7 @@ const ButtonsOnclickMax = (props) => {
 const ButtonsOnclickMenos = (props) => {
   return (
     <View>
-      <TouchableOpacity onPress={props.buttonMenos} style={stylesProdStock.ButtonMax}>
+      <TouchableOpacity onPress={props.buttonMenos} style={StylesProdStock.ButtonMax}>
         <AntDesign name="minus" size={24} color="#000" />
       </TouchableOpacity>
     </View>

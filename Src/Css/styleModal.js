@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const styleModal = StyleSheet.create({
+const StyleModal = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "center",
@@ -95,4 +95,4 @@ const styleModal = StyleSheet.create({
 
 });
 
-export default styleModal;
+export default StyleModal;

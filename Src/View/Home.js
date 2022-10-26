@@ -1,6 +1,6 @@
-import stylesCss from "../Css/styleSectionHome";
+import StylesCss from "../Css/styleSectionHome";
 import React from "react";
-import {View, Text, SafeAreaView, ScrollView} from "react-native";
+import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Products from "../Components/HomeProductIntrodution/HomeProductIntrodution";
 import { database } from "../Config/Config-Fb";
@@ -11,7 +11,7 @@ export default function Home() {
 
     const navigation = useNavigation();
 
-    const [products, setProduts] = React.useState([]);
+    const [listProducts, setlistProducts] = React.useState([]);
 
 
 
@@ -21,7 +21,7 @@ export default function Home() {
         const q = query(collectionRef, orderBy('createAdd', 'desc'));
 
         const unSuscribe = onSnapshot(q, QuerySnapshot => {
-            setProduts(
+            setlistProducts(
                 QuerySnapshot.docs.map(doc => ({
                     id: doc.id,
                     imgProducts: doc.data().imgProducts,
@@ -43,23 +43,23 @@ export default function Home() {
     // Agregando botton en la parte superior derecha para agregar product
     // React.useLayoutEffect(() => {
     //     navigation.setOptions({
-    //         headerRight: () => <AntDesign style={stylesCss.btnAdd} name="plussquare" size={33} color="black" onPress={() => navigation.navigate('AddProducts')} />
+    //         headerRight: () => <AntDesign style={StylesCss.btnAdd} name="plussquare" size={33} color="black" onPress={() => navigation.navigate('AddProducts')} />
     //     })
     // }, [])
     // --------------------------------
 
     return (
         <View>
-            <View style={stylesCss.contContainer}>
+            <View style={StylesCss.contContainer}>
+                <Text style={StylesCss.TitleLisProducts}>Listado de productos</Text>
                 <SafeAreaView>
                     <ScrollView>
-                        <Text style={stylesCss.TitleLisProducts}>Listado de productos</Text>
-                        {products.map(prod => <Products key={prod.id} {...prod} />)}
+                        {listProducts.map(prod => <Products key={prod.id} {...prod} />)}
                     </ScrollView>
                 </SafeAreaView>
 
 
-                <Entypo style={stylesCss.btnAdd} name="circle-with-plus" size={50} color="black" onPress={() => navigation.navigate('AddProducts')} />
+                <Entypo style={StylesCss.btnAdd} name="circle-with-plus" size={50} color="black" onPress={() => navigation.navigate('AddProducts')} />
             </View>
         </View>
     )
