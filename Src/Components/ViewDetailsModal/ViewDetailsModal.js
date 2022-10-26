@@ -31,7 +31,7 @@ const ViewDetailsModal = (props) => {
                 <Text style={StyleModal.modalText}>Detalle del producto</Text>
 
                 <View style={StylesCss.ProductsImgModal}>
-                  <Image source={props.imgProducts} style={StylesCss.imgProducts} />
+                  <Image source={{uri: props.imgProducts}} style={StylesCss.imgProducts} />
                 </View>
 
                 <Text style={StylesCss.productsStock}>Disponible: {props.productsStock}</Text>
@@ -40,6 +40,7 @@ const ViewDetailsModal = (props) => {
                 <View>
                   <Text style={StylesCss.titleProductsDescrip}>Descripcion:</Text>
                   <Text style={StylesCss.productsDescriptions}>{props.descriptionProducts}</Text>
+                  <Text>{props.createAdd}</Text>
                 </View>
 
               </View>

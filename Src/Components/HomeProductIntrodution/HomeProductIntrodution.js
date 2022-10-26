@@ -26,7 +26,7 @@ export default function Products({
 
 }) {
 
-    console.log(imgProducts)
+    // console.log({uri: imgProducts})
 
     // Function para marcar como vendido los productos.
     const onEdit = () => {
@@ -62,6 +62,7 @@ export default function Products({
                     viewDetailsProducts={() => viewDitails}
                     productsStock={productsStock}
                     descriptionProducts={descriptionProducts}
+                    createAdd={createAdd}
                 />
             </View>
 

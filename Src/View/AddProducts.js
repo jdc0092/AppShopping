@@ -13,6 +13,7 @@ import { SelectMoneda } from "../Components/AddProductsComponents/AddProductsCom
 import { InputStock } from "../Components/AddProductsComponents/AddProductsComponents";
 import AddBtnSourceImg from "../Components/AddBtnSourceImg/AddBtnSourceImg";
 import ShowInfoProducts from "../Components/AddShowInfoProducts/AddShowInfoProducts";
+import moment from 'moment'
 
 
 export default function AddProducts() {
@@ -20,12 +21,12 @@ export default function AddProducts() {
     // Uso de la navegacion para volver atra.
     const nativeGoBack = useNavigation();
     // --------------------------------
-
+    
     // useState para cargar las imagenes y devolverla a la database.
     const [image, setImage] = useState('IMG');
     // --------------------------------
-
-
+    
+    
     // Aqui tenemos nuestro objeto useState
     const [newItem, setNewItem] = useState({
         imgProducts: "IMG",
@@ -35,10 +36,11 @@ export default function AddProducts() {
         descriptionProducts: '',
         selectMoneda: '',
         inSold: false,
-        createAdd: new Date(),
+        createAdd: moment().format('DD-MM-YYYY hh:mm:ss a'),
     });
     // --------------------------------
-
+    
+    // console.log(moment().format('DD-MM-YYYY hh:mm:ss a'))
 
     // Introdicion de informacion a la database.
     const onSend = async () => {
@@ -77,6 +79,7 @@ export default function AddProducts() {
                         <Text style={StylesAddProducts.AddProdTitle}>Add Products</Text>
 
                         <Text style={StylesAddProducts.contAddImgProducts} onPress={() => pickImage()}>
+                            {/* <Image source={{ uri: image }} style={StylesAddProducts.AddImgProducts} /> */}
                             {image && <Image source={{ uri: image }} style={StylesAddProducts.AddImgProducts} />}
                         </Text>
 
