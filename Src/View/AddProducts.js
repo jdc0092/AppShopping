@@ -36,16 +36,19 @@ export default function AddProducts() {
         descriptionProducts: '',
         selectMoneda: '',
         inSold: false,
-        createAdd: moment().format('DD-MM-YYYY hh:mm:ss a'),
+        createAdd: '',
     });
     // --------------------------------
 
-    // console.log(moment().format('DD-MM-YYYY hh:mm:ss a'))
+    
 
     // Introdicion de informacion a la database.
     const onSend = async () => {
         await addDoc(collection(database, 'LisProducts'), newItem);
-        nativeGoBack.goBack()
+        nativeGoBack.goBack();
+
+        
+        console.log(newItem.createAdd)
     }
     // --------------------------------
 
@@ -59,13 +62,15 @@ export default function AddProducts() {
             aspect: [4, 3],
             quality: 1,
         });
+        
 
         if (!result.cancelled) {
             setImage(result.uri);
-
+            
             setNewItem({
-                ...newItem, imgProducts: result.uri,
-            })
+                ...newItem, imgProducts: result.uri, createAdd: (moment().format('DD-MM-YYYY hh:mm:ss a'))
+            });
+
         }
     };
     // --------------------------------

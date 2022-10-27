@@ -5,19 +5,19 @@ const StylesCss = StyleSheet.create({
 
     contContainer: {
         padding: 15,
-        alignItems: 'center',
+        // alignItems: 'center',
         backgroundColor: '#e5e5e5',
     },
 
     contProduts: {
-        alignItems: 'center',
         marginBottom: 15,
         width: '100%',
         backgroundColor: '#fff',
-        alignItems: 'center',
-        paddingLeft: 30,
-        paddingRight: 30,
-        paddingBottom: 30
+        // alignItems: 'center',
+        // paddingLeft: 30,
+        // paddingRight: 30,
+        // paddingBottom: 30
+        padding: 15
     },
 
     ProductsImgModal:{
@@ -31,10 +31,15 @@ const StylesCss = StyleSheet.create({
     AddContProductsImg: {
         width: 280,
         height: 280,
-        borderWidth: 1,
+        // borderWidth: 1,
         borderColor: "#ccc",
         marginBottom: 15,
 
+    },
+
+    AddContProductsInfoImg:{
+        // width: '100%',
+        // alignItems: 'center',
     },
     
     imgProducts: {
@@ -53,12 +58,12 @@ const StylesCss = StyleSheet.create({
     },
     
     productsName: {
-        color: '#000',
+        color: '#0062bd',
         fontWeight: '700',
-        fontSize: 23,
-        marginBottom: 5,
+        fontSize: 18,
+        marginBottom: 10,
         textAlign: 'center',
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
 
     },
     
@@ -75,7 +80,7 @@ const StylesCss = StyleSheet.create({
         fontWeight: '800',
         fontSize: 25,
         marginBottom: 5,
-        textAlign: 'center'
+        textAlign: 'center',
 
     },
 

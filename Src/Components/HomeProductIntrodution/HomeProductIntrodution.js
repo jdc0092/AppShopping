@@ -52,10 +52,16 @@ export default function Products({
                 />
             </View>
 
-            <View style={StylesCss.AddContProductsImg}>
-                <Image source={{uri: imgProducts}} style={StylesCss.imgProducts} />
+            <View>
+                <Text style={StylesCss.productsName}>{nameProducts}</Text>
             </View>
-            
+
+            <View style={StylesCss.AddContProductsImg}>
+                {/* <View style={StylesCss.AddContProductsInfoImg}> */}
+                    <Image source={{ uri: imgProducts }} resizeMode='contain' style={StylesCss.imgProducts} />
+                {/* </View> */}
+            </View>
+
             <View>
                 <ViewDetailsModal
                     imgProducts={imgProducts}
@@ -85,10 +91,9 @@ export default function Products({
             </RN.View> */}
 
             <View>
-                <Text style={StylesCss.productsName}>{nameProducts}</Text>
                 <Text style={StylesCss.productsPrice}>{selectMoneda.value}{priceProducts}</Text>
                 {/* <Text style={StylesCss.productsPrice}>{isSold}</Text> */}
-                
+
             </View>
 
             {isSold ? (
@@ -104,7 +109,7 @@ export default function Products({
                 </TouchableOpacity>
             )}
 
-           
+
         </View>
 
     )

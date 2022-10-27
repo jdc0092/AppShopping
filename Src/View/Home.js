@@ -50,17 +50,15 @@ export default function Home() {
 
     return (
         <View>
-            <View style={StylesCss.contContainer}>
-                <Text style={StylesCss.TitleLisProducts}>Listado de productos</Text>
-                <SafeAreaView>
-                    <ScrollView>
+            <Text style={StylesCss.TitleLisProducts}>Listado de productos</Text>
+            <SafeAreaView>
+                <ScrollView>
+                    <View style={StylesCss.contContainer}>
                         {listProducts.map(prod => <Products key={prod.id} {...prod} />)}
                         <Entypo style={StylesCss.btnAdd} name="circle-with-plus" size={50} color="black" onPress={() => navigation.navigate('AddProducts')} />
-                    </ScrollView>
-                </SafeAreaView>
-
-
-            </View>
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
         </View>
     )
 }
