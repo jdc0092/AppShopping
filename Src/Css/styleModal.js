@@ -2,11 +2,12 @@ import { StyleSheet } from "react-native";
 
 const StyleModal = StyleSheet.create({
   centeredView: {
-    // flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
+  
   modalView: {
+    flex: 1,
     padding: 20,
     alignItems: "center",
     shadowColor: "#000",
@@ -21,6 +22,7 @@ const StyleModal = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
+
   contModal: {
     width: '100%',
     height: '100%',

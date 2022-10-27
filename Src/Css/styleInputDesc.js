@@ -15,7 +15,7 @@ const StyleInputDescript = StyleSheet.create({
     },
 
     desCription:{
-        marginBottom: 20
+        marginBottom: 15
     }
 })
 

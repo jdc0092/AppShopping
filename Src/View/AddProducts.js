@@ -11,9 +11,9 @@ import { InputPrice } from "../Components/AddProductsComponents/AddProductsCompo
 import { BtnPublish } from "../Components/AddProductsComponents/AddProductsComponents";
 import { SelectMoneda } from "../Components/AddProductsComponents/AddProductsComponents";
 import { InputStock } from "../Components/AddProductsComponents/AddProductsComponents";
-import AddBtnSourceImg from "../Components/AddBtnSourceImg/AddBtnSourceImg";
+import { AddBtnSourceImg } from "../Components/AddProductsComponents/AddProductsComponents";
 import ShowInfoProducts from "../Components/AddShowInfoProducts/AddShowInfoProducts";
-import moment from 'moment'
+import moment from 'moment';
 
 
 export default function AddProducts() {
@@ -21,12 +21,12 @@ export default function AddProducts() {
     // Uso de la navegacion para volver atra.
     const nativeGoBack = useNavigation();
     // --------------------------------
-    
+
     // useState para cargar las imagenes y devolverla a la database.
     const [image, setImage] = useState('IMG');
     // --------------------------------
-    
-    
+
+
     // Aqui tenemos nuestro objeto useState
     const [newItem, setNewItem] = useState({
         imgProducts: "IMG",
@@ -39,7 +39,7 @@ export default function AddProducts() {
         createAdd: moment().format('DD-MM-YYYY hh:mm:ss a'),
     });
     // --------------------------------
-    
+
     // console.log(moment().format('DD-MM-YYYY hh:mm:ss a'))
 
     // Introdicion de informacion a la database.
@@ -78,12 +78,11 @@ export default function AddProducts() {
                     <View style={StylesAddProducts.AddContInfoHead}>
                         <Text style={StylesAddProducts.AddProdTitle}>Add Products</Text>
 
-                        <Text style={StylesAddProducts.contAddImgProducts} onPress={() => pickImage()}>
-                            {/* <Image source={{ uri: image }} style={StylesAddProducts.AddImgProducts} /> */}
+                        <View style={StylesAddProducts.contAddImgProducts}>
                             {image && <Image source={{ uri: image }} style={StylesAddProducts.AddImgProducts} />}
-                        </Text>
-
-
+                            {/* <Image source={{ uri: image }} style={StylesAddProducts.AddImgProducts} /> */}
+                        </View>
+                        
                         <AddBtnSourceImg
                             btnImg={pickImage}
                         />
@@ -98,9 +97,11 @@ export default function AddProducts() {
 
 
 
-                    <InputName
-                        inputNameProduct={(text) => setNewItem({ ...newItem, nameProducts: text })}
-                    />
+                    <View>
+                        <InputName
+                            inputNameProduct={(text) => setNewItem({ ...newItem, nameProducts: text })}
+                        />
+                    </View>
 
                     <View style={StylesAddProducts.AddContPriceMoned}>
                         <SelectMoneda

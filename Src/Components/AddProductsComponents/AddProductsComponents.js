@@ -2,9 +2,25 @@ import React, { useState } from 'react';
 import { Text, View, TextInput, TouchableHighlight } from 'react-native'
 import StylesAddProducts from "../../Css/styleSectionAddProduts";
 import StyleInputDescript from '../../Css/styleInputDesc';
-// import SelectDropdown from 'react-native-select-dropdown'
-// import SelectList from 'react-native-dropdown-select-list'
 import { Dropdown } from 'react-native-element-dropdown';
+import { Feather } from '@expo/vector-icons';
+
+
+const AddBtnSourceImg = (props) =>{
+    return (
+        <View style={StylesAddProducts.AddImgContBtn}>
+            <TouchableHighlight
+                onPress={props.btnImg}
+                style={StylesAddProducts.AddImgBtn}
+                underlayColor='#787878'>
+                <Text style={StylesAddProducts.AddBtnMenuText}>
+                    <Feather name="image" size={30} color="white" />
+                </Text>
+            </TouchableHighlight>
+        </View>
+
+    )
+};
 
 
 const InputName = (props) => {
@@ -119,6 +135,7 @@ const BtnPublish = (props) => {
 
 
 export {
+    AddBtnSourceImg,
     InputName,
     InputPrice,
     InputDescriptions,
