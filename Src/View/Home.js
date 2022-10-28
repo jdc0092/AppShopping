@@ -1,17 +1,35 @@
-import StylesCss from "../Css/styleSectionHome";
 import React from "react";
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
+import StylesCss from "../Css/styleSectionHome";
+import { View, Text, SafeAreaView, ScrollView, RefreshControl } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Products from "../Components/HomeProductIntrodution/HomeProductIntrodution";
 import { database } from "../Config/Config-Fb";
 import { collection, onSnapshot, orderBy, query, QuerySnapshot } from "firebase/firestore";
 import { Entypo } from '@expo/vector-icons';
 
+
+
+
 export default function Home() {
 
+    // Para refrescar el home de la app.
+    const wait = (timeout) => {
+        return new Promise(resolve => setTimeout(resolve, timeout));
+    }
+
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        wait(2000).then(() => setRefreshing(false));
+
+    }, []);
+    // -------------------------------------
+    
     const navigation = useNavigation();
 
     const [listProducts, setlistProducts] = React.useState([]);
+
 
 
 
@@ -40,6 +58,7 @@ export default function Home() {
     }, []);
 
 
+
     // Agregando botton en la parte superior derecha para agregar product
     // React.useLayoutEffect(() => {
     //     navigation.setOptions({
@@ -50,13 +69,17 @@ export default function Home() {
 
     return (
         <View>
-            <Text style={StylesCss.TitleLisProducts}>Listado de productos</Text>
             <SafeAreaView>
-                <ScrollView>
-                    <View style={StylesCss.contContainer}>
-                        {listProducts.map(prod => <Products key={prod.id} {...prod} />)}
-                        <Entypo style={StylesCss.btnAdd} name="circle-with-plus" size={50} color="black" onPress={() => navigation.navigate('AddProducts')} />
-                    </View>
+                <ScrollView
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
+                        />
+                    }
+                >
+                    <Text style={StylesCss.TitleLisProducts}>Listado de productos</Text>
+                    {listProducts.map(prod => <Products key={prod.id} {...prod} />)}
                 </ScrollView>
             </SafeAreaView>
         </View>

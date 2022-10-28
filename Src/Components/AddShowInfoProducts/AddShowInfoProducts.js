@@ -7,8 +7,9 @@ const ShowInfoProducts = (props) => {
         <View>
             <Text style={StylesAddProducts.AddNameProducts}>{props.showNameProduct}</Text>
             <Text style={StylesAddProducts.AddPriceProducts}>{props.moneda}{props.showPriceProducts}</Text>
+            <Text style={StylesAddProducts.AddNameProducts}>Items: {props.itemsStock}</Text>
             <View style={StyleInputDescript.desCription}>
-                <Text>{props.showDescriptProduct}</Text>
+                <Text>Descriccion: {props.showDescriptProduct}</Text>
             </View>
         </View>
     )

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, Image, SafeAreaView, ScrollView } from "react-native";
+import { Text, View, Image, SafeAreaView, ScrollView, RefreshControl } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import StylesAddProducts from "../Css/styleSectionAddProduts";
 import { database } from "../Config/Config-Fb";
@@ -26,9 +26,8 @@ export default function AddProducts() {
     const [image, setImage] = useState('IMG');
     // --------------------------------
 
-
-    // Aqui tenemos nuestro objeto useState
-    const [newItem, setNewItem] = useState({
+    
+    const initialState = {
         imgProducts: "IMG",
         nameProducts: "Name Products",
         priceProducts: 0,
@@ -37,17 +36,24 @@ export default function AddProducts() {
         selectMoneda: '',
         inSold: false,
         createAdd: '',
-    });
+    }
+
+    // Aqui tenemos nuestro objeto useState
+    const [newItem, setNewItem] = useState(initialState);
+    
     // --------------------------------
 
-    
+
 
     // Introdicion de informacion a la database.
     const onSend = async () => {
         await addDoc(collection(database, 'LisProducts'), newItem);
+
+        // setNewItem(initialState)
+        
         nativeGoBack.goBack();
 
-        
+
         console.log(newItem.createAdd)
     }
     // --------------------------------
@@ -62,11 +68,11 @@ export default function AddProducts() {
             aspect: [4, 3],
             quality: 1,
         });
-        
+
 
         if (!result.cancelled) {
             setImage(result.uri);
-            
+
             setNewItem({
                 ...newItem, imgProducts: result.uri, createAdd: (moment().format('DD-MM-YYYY hh:mm:ss a'))
             });
@@ -76,10 +82,32 @@ export default function AddProducts() {
     // --------------------------------
 
 
+    // Para refrescar el home de la app.
+    const wait = (timeout) => {
+        return new Promise(resolve => setTimeout(resolve, timeout));
+    }
+
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        wait(2000).then(() => setRefreshing(false));
+
+    }, []);
+    // -------------------------------------
+
+
     return (
         <View style={StylesAddProducts.AddContContainer}>
             <SafeAreaView>
-                <ScrollView>
+                <ScrollView
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
+                        />
+                    }
+                >
                     <View style={StylesAddProducts.AddContInfoHead}>
                         <Text style={StylesAddProducts.AddProdTitle}>Add Products</Text>
 
@@ -87,7 +115,7 @@ export default function AddProducts() {
                             {image && <Image source={{ uri: image }} style={StylesAddProducts.AddImgProducts} />}
                             {/* <Image source={{ uri: image }} style={StylesAddProducts.AddImgProducts} /> */}
                         </View>
-                        
+
                         <AddBtnSourceImg
                             btnImg={pickImage}
                         />
@@ -96,6 +124,7 @@ export default function AddProducts() {
                             showNameProduct={newItem.nameProducts}
                             showPriceProducts={newItem.priceProducts}
                             moneda={newItem.selectMoneda.value}
+                            itemsStock={newItem.productsStock}
                             showDescriptProduct={newItem.descriptionProducts}
                         />
                     </View>

@@ -36,7 +36,9 @@ const StyleModal = StyleSheet.create({
   },
 
   closeModal: {
-    alignItems: "flex-end",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     // marginTop:5,
     marginBottom: 15,
   },
@@ -68,10 +70,7 @@ const StyleModal = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center"
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
-  },
+  
 
   BtnModalText: {
     color: '#fff',
@@ -93,6 +92,42 @@ const StyleModal = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1
   },
+
+
+  
+  modalText: {
+    textAlign: "center"
+  },
+
+
+  ProductsImgModal:{
+    width: '100%',
+    height: 250,
+    marginBottom: 15,
+},
+
+container: {
+  flex: 1,
+},
+
+imgProducts: {
+  width: '100%',
+  height: '100%',
+},
+
+productsStock: {
+  fontSize: 18,
+  marginBottom: 15,
+
+},
+
+
+productsDescriptions:{
+  marginBottom: 15,
+  color: '#181818'
+},
+
+
 
 
 });

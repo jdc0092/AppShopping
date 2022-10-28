@@ -125,7 +125,7 @@ const BtnPublish = (props) => {
                 onPress={props.btnPublish}
                 style={StylesAddProducts.AddPublishBtn}
                 underlayColor='#787878'>
-                <Text style={StylesAddProducts.AddBtnMenuText}>Add Products"</Text>
+                <Text style={StylesAddProducts.AddBtnMenuText}>Add Products</Text>
             </TouchableHighlight>
         </View>
 

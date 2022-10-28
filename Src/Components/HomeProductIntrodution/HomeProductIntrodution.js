@@ -44,35 +44,48 @@ export default function Products({
 
     return (
 
-        <View style={StylesCss.contProduts}>
-            <View style={StylesCss.conOndelete}>
-                <OndeleteModal
-                    idProducts={id}
-                    onDeleteProducts={onDelete}
-                />
-            </View>
 
-            <View>
-                <Text style={StylesCss.productsName}>{nameProducts}</Text>
-            </View>
+        <View style={StylesCss.contContainer}>
+            {/* <Entypo style={StylesCss.btnAdd} name="circle-with-plus" size={50} color="black" onPress={() => navigation.navigate('AddProducts')} /> */}
 
-            <View style={StylesCss.AddContProductsImg}>
-                {/* <View style={StylesCss.AddContProductsInfoImg}> */}
+            <View style={StylesCss.contProduts}>
+
+                <View style={StylesCss.contNameTop}>
+                    <View>
+                        <Text style={StylesCss.productsName}>{nameProducts}</Text>
+                    </View>
+
+                    {/* <View style={StylesCss.conOndelete}> */}
+                        <OndeleteModal
+                            idProducts={id}
+                            onDeleteProducts={onDelete}
+                        />
+                    {/* </View> */}
+                </View>
+
+                <View style={StylesCss.AddContProductsImg}>
+                    {/* <View style={StylesCss.AddContProductsInfoImg}> */}
                     <Image source={{ uri: imgProducts }} resizeMode='contain' style={StylesCss.imgProducts} />
-                {/* </View> */}
-            </View>
+                    {/* </View> */}
+                </View>
 
-            <View>
-                <ViewDetailsModal
-                    imgProducts={imgProducts}
-                    viewDetailsProducts={() => viewDitails}
-                    productsStock={productsStock}
-                    descriptionProducts={descriptionProducts}
-                    createAdd={createAdd}
-                />
-            </View>
+                <View>
+                    <Text style={StylesCss.productsPrice}>{selectMoneda.value}{priceProducts}</Text>
+                    {/* <Text style={StylesCss.productsPrice}>{isSold}</Text> */}
 
-            {/* <RN.View style={stylesAddProducts.AddContBtnMaxMen}>
+                </View>
+
+                <View>
+                    <ViewDetailsModal
+                        imgProducts={imgProducts}
+                        viewDetailsProducts={() => viewDitails}
+                        productsStock={productsStock}
+                        descriptionProducts={descriptionProducts}
+                        createAdd={createAdd}
+                    />
+                </View>
+
+                {/* <RN.View style={stylesAddProducts.AddContBtnMaxMen}>
                 <RN.View>
                     <ButtonsOnclickMax
                         buttonMax={upIncrement}
@@ -90,26 +103,21 @@ export default function Products({
                 </RN.View>
             </RN.View> */}
 
-            <View>
-                <Text style={StylesCss.productsPrice}>{selectMoneda.value}{priceProducts}</Text>
-                {/* <Text style={StylesCss.productsPrice}>{isSold}</Text> */}
+
+                {isSold ? (
+                    <TouchableOpacity style={StylesCss.btnClickIsSoldGray}>
+                        <Text>Click</Text>
+                    </TouchableOpacity>
+
+                ) : (
+                    <TouchableOpacity style={StylesCss.btnClickIsSold}
+                        onPress={onEdit}
+                    >
+                        <Text>Click</Text>
+                    </TouchableOpacity>
+                )}
 
             </View>
-
-            {isSold ? (
-                <TouchableOpacity style={StylesCss.btnClickIsSoldGray}>
-                    <Text>Click</Text>
-                </TouchableOpacity>
-
-            ) : (
-                <TouchableOpacity style={StylesCss.btnClickIsSold}
-                    onPress={onEdit}
-                >
-                    <Text>Click</Text>
-                </TouchableOpacity>
-            )}
-
-
         </View>
 
     )
