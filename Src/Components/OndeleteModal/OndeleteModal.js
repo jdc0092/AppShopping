@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Alert, Modal, Text, View, Button, } from "react-native";
 import StyleModal from "../../Css/styleModal";
-import { AntDesign } from '@expo/vector-icons';
 import stylesCss from "../../Css/styleSectionHome";
 import { FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons'; 
 
 const OndeleteModal = (props) => {
 
@@ -45,7 +45,7 @@ const OndeleteModal = (props) => {
         </View>
       </Modal>
 
-      <AntDesign name="delete" style={stylesCss.onDelete} onPress={() => setModalVisible(true)} />
+      <MaterialIcons name="delete" size={24} style={stylesCss.onDelete} onPress={() => setModalVisible(true)} />
 
     </View>
   );

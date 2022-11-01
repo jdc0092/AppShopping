@@ -4,7 +4,7 @@ import { View, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 
-const ShowStock = (props) => {
+const ShowItems = (props) => {
   return (
     <View>{props.showProdStock}</View>
   )
@@ -33,4 +33,4 @@ const ButtonsOnclickMenos = (props) => {
 }
 
 
-export { ButtonsOnclickMax, ButtonsOnclickMenos, ShowStock }
+export { ButtonsOnclickMax, ButtonsOnclickMenos, ShowItems }

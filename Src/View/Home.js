@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import StylesCss from "../Css/styleSectionHome";
-import { View, Text, SafeAreaView, ScrollView, RefreshControl } from "react-native";
+import { View, Text, SafeAreaView, ScrollView, RefreshControl, TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Products from "../Components/HomeProductIntrodution/HomeProductIntrodution";
 import { database } from "../Config/Config-Fb";
 import { collection, onSnapshot, orderBy, query, QuerySnapshot } from "firebase/firestore";
 import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 
 
@@ -25,15 +26,13 @@ export default function Home() {
 
     }, []);
     // -------------------------------------
-    
+
     const navigation = useNavigation();
 
     const [listProducts, setlistProducts] = React.useState([]);
 
 
-
-
-    React.useEffect(() => {
+    useEffect(() => {
 
         const collectionRef = collection(database, 'LisProducts');
         const q = query(collectionRef, orderBy('createAdd', 'desc'));
@@ -43,12 +42,12 @@ export default function Home() {
                 QuerySnapshot.docs.map(doc => ({
                     id: doc.id,
                     imgProducts: doc.data().imgProducts,
-                    nameProducts: doc.data().nameProducts,
-                    priceProducts: doc.data().priceProducts,
+                    productsName: doc.data().productsName,
+                    productsPrice: doc.data().productsPrice,
                     productsStock: doc.data().productsStock,
-                    selectMoneda: doc.data().selectMoneda,
+                    selectCurrency: doc.data().selectCurrency,
                     isSold: doc.data().isSold,
-                    descriptionProducts: doc.data().descriptionProducts,
+                    productsDescription: doc.data().productsDescription,
                     createAdd: doc.data().createAdd
                 })
                 )
@@ -57,27 +56,38 @@ export default function Home() {
         return unSuscribe;
     }, []);
 
-
+    // console.log(listProducts)
 
     // Agregando botton en la parte superior derecha para agregar product
-    // React.useLayoutEffect(() => {
-    //     navigation.setOptions({
-    //         headerRight: () => <AntDesign style={StylesCss.btnAdd} name="plussquare" size={33} color="black" onPress={() => navigation.navigate('AddProducts')} />
-    //     })
-    // }, [])
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () =>
+                <AntDesign
+                    style={StylesCss.btnAdd}
+                    name="plussquare"
+                    size={33}
+                    color="black"
+                    onPress={() => navigation.navigate('AddProducts')}
+                />
+        })
+    }, []);
     // --------------------------------
+
+
 
     return (
         <View>
+            {/* <TextInput placeholder="Search"
+                onChangeText={(events) => searchEvents(events)}
+            /> */}
             <SafeAreaView>
-                <ScrollView
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={refreshing}
-                            onRefresh={onRefresh}
-                        />
-                    }
-                >
+                <ScrollView refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                }>
+
                     <Text style={StylesCss.TitleLisProducts}>Listado de productos</Text>
                     {listProducts.map(prod => <Products key={prod.id} {...prod} />)}
                 </ScrollView>

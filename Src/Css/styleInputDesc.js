@@ -15,7 +15,10 @@ const StyleInputDescript = StyleSheet.create({
     },
 
     desCription:{
-        marginBottom: 15
+        marginBottom: 15,
+        fontWeight: '700',
+        textAlign: "center",
+        fontSize: 18
     }
 })
 

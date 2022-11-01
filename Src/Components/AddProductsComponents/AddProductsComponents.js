@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableHighlight } from 'react-native'
+import { Text, View, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native'
 import StylesAddProducts from "../../Css/styleSectionAddProduts";
 import StyleInputDescript from '../../Css/styleInputDesc';
 import { Dropdown } from 'react-native-element-dropdown';
 import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 
 const AddBtnSourceImg = (props) =>{
@@ -41,6 +42,7 @@ const InputPrice = (props) => {
             <TextInput
                 style={StylesAddProducts.AddTextInput}
                 placeholder='Price'
+                value={props.valuePriceModal}
                 onChangeText={props.inputPriceProduct}
                 keyboardType={'number-pad'}
             />
@@ -48,22 +50,81 @@ const InputPrice = (props) => {
     )
 };
 
-const InputStock = (props) => {
+const InputPriceModal = (props) => {
     return (
         <View>
             <TextInput
                 style={StylesAddProducts.AddTextInput}
-                placeholder='0'
-                onChangeText={props.upIncrementStock}
+                placeholder='Price Ant'
+                value={props.valuePrice}
+                onChangeText={props.priceModal}
                 keyboardType={'number-pad'}
-                maxLength={2}
-
             />
         </View>
     )
 };
 
-const SelectMoneda = (props) => {
+
+const InputPriceOfertModal = (props) => {
+    return (
+        <View>
+            <TextInput
+                style={StylesAddProducts.AddTextInput}
+                placeholder='Price Now!'
+                value={props.valuePrice}
+                onChangeText={props.priceModal}
+                keyboardType={'number-pad'}
+            />
+        </View>
+    )
+};
+
+
+
+// const InputStock = (props) => {
+//     return (
+//         <View>
+//             <TextInput
+//                 style={StylesAddProducts.AddTextInput}
+//                 placeholder='0'
+//                 onChangeText={props.upIncrementStock}
+//                 keyboardType={'number-pad'}
+//                 maxLength={2}
+
+//             />
+//         </View>
+//     )
+// };
+
+const ShowItems = (props) => {
+    return (
+      <View>{props.showProdStock}</View>
+    )
+  };
+  
+  
+  const ItemsMax = (props) => {
+    return (
+      <View>
+        <TouchableOpacity onPress={props.bntItemsMax} style={StylesAddProducts.ButtonMax}>
+          <AntDesign name="plus" size={24} color="#000" />
+        </TouchableOpacity>
+      </View>
+    )
+  };
+  
+  const ItemsLess = (props) => {
+    return (
+      <View>
+        <TouchableOpacity onPress={props.bntItemsLess} style={StylesAddProducts.ButtonMax}>
+          <AntDesign name="minus" size={24} color="#000" />
+        </TouchableOpacity>
+      </View>
+  
+    )
+  };
+
+const SelectCurrency = (props) => {
  
     const [valueOpt, setValueOpt] = useState(null);
 
@@ -140,6 +201,11 @@ export {
     InputPrice,
     InputDescriptions,
     BtnPublish,
-    SelectMoneda,
-    InputStock,
+    SelectCurrency,
+    ShowItems,
+    ItemsMax,
+    ItemsLess,
+    InputPriceModal,
+    InputPriceOfertModal
+    // InputStock,
 };

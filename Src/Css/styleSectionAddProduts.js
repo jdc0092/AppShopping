@@ -31,7 +31,10 @@ const StylesAddProducts = StyleSheet.create({
         // zIndex: 9,
     },
     
-    
+    OptionsModal:{
+        alignItems: 'flex-end',
+        marginBottom: 15,
+    },
 
     contAddImgProducts: {
         borderColor: "#ccc",
@@ -52,12 +55,12 @@ const StylesAddProducts = StyleSheet.create({
     AddNameProducts: {
         color: '#000',
         fontSize: 20,
-        marginBottom: 10,
+        marginBottom: 15,
         textTransform: 'capitalize',
         textAlign: 'center',
     },
 
-    AddPriceProducts: {
+    AddProductsPrice: {
         color: '#ff4040',
         fontWeight: '500',
         fontSize: 25,
@@ -96,6 +99,12 @@ const StylesAddProducts = StyleSheet.create({
     },
 
 
+    DesCription:{
+        marginBottom: 15,
+        fontWeight: '700',
+        textAlign: "center",
+        fontSize: 18
+    },
 
     AddImgBtn: {
         paddingTop: 5,
@@ -126,6 +135,28 @@ const StylesAddProducts = StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1
     },
+
+
+
+
+    contBtns:{
+        flsexDirection: "row"
+        
+      },
+    
+      ButtonMax: {
+        color: "red",
+        marginBottom: 15,
+        alignItems: "center"
+      },
+      
+      ButtonMenos:{
+        backgroundColor: '#ccc',
+        marginBottom: 15,
+        backgroundColor: 'orange',
+        alignItems: "center",
+        display: "flex"
+      },
 
 
 

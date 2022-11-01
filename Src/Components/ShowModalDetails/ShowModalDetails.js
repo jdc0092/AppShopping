@@ -5,7 +5,7 @@ import StyleModal from "../../Css/styleModal";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
-const ViewDetailsModal = (props) => {
+const ShowModalDetails = (props) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -43,7 +43,7 @@ const ViewDetailsModal = (props) => {
 
                 <View>
                   <Text style={StyleModal.titleProductsDescrip}>Descripcion:</Text>
-                  <Text style={StyleModal.productsDescriptions}>{props.descriptionProducts}</Text>
+                  <Text style={StyleModal.productsDescriptions}>{props.productsDescription}</Text>
                   <Text>{props.createAdd}</Text>
                 </View>
 
@@ -60,4 +60,4 @@ const ViewDetailsModal = (props) => {
 };
 
 
-export default ViewDetailsModal;
+export default ShowModalDetails;

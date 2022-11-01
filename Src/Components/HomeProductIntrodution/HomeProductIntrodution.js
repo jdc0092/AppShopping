@@ -7,7 +7,8 @@ import { database } from "../../Config/Config-Fb";
 // import { ButtonsOnclickMenos } from "../HomeBtnProductStock/HomeBtnProductStock";
 // import { ShowStock } from "../HomeBtnProductStock/HomeBtnProductStock";
 import OndeleteModal from "../OndeleteModal/OndeleteModal";
-import ViewDetailsModal from "../ViewDetailsModal/ViewDetailsModal";
+import ShowModalDetails from "../ShowModalDetails/ShowModalDetails";
+import { SelectCurrency } from "../AddProductsComponents/AddProductsComponents";
 
 // import styleDescriptions from "../../Css/styleDescriptions";
 
@@ -16,11 +17,11 @@ export default function Products({
 
     id,
     imgProducts,
-    nameProducts,
-    priceProducts,
+    productsName,
+    productsPrice,
     productsStock,
-    descriptionProducts,
-    selectMoneda,
+    productsDescription,
+    selectCurrency,
     isSold,
     createAdd
 
@@ -52,35 +53,29 @@ export default function Products({
 
                 <View style={StylesCss.contNameTop}>
                     <View>
-                        <Text style={StylesCss.productsName}>{nameProducts}</Text>
+                        <Text style={StylesCss.productsName}>{productsName}</Text>
                     </View>
 
-                    {/* <View style={StylesCss.conOndelete}> */}
-                        <OndeleteModal
-                            idProducts={id}
-                            onDeleteProducts={onDelete}
-                        />
-                    {/* </View> */}
+                    <OndeleteModal
+                        idProducts={id}
+                        onDeleteProducts={onDelete}
+                    />
                 </View>
 
                 <View style={StylesCss.AddContProductsImg}>
-                    {/* <View style={StylesCss.AddContProductsInfoImg}> */}
                     <Image source={{ uri: imgProducts }} resizeMode='contain' style={StylesCss.imgProducts} />
-                    {/* </View> */}
                 </View>
 
                 <View>
-                    <Text style={StylesCss.productsPrice}>{selectMoneda.value}{priceProducts}</Text>
-                    {/* <Text style={StylesCss.productsPrice}>{isSold}</Text> */}
-
+                    <Text style={StylesCss.productsPrice}>{selectCurrency.value}{productsPrice}</Text>
                 </View>
 
                 <View>
-                    <ViewDetailsModal
+                    <ShowModalDetails
                         imgProducts={imgProducts}
-                        viewDetailsProducts={() => viewDitails}
+                        // viewDetailsProducts={() => viewDitails}
                         productsStock={productsStock}
-                        descriptionProducts={descriptionProducts}
+                        productsDescription={productsDescription}
                         createAdd={createAdd}
                     />
                 </View>

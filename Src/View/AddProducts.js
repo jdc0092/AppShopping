@@ -5,15 +5,22 @@ import StylesAddProducts from "../Css/styleSectionAddProduts";
 import { database } from "../Config/Config-Fb";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native"
-import { InputDescriptions } from "../Components/AddProductsComponents/AddProductsComponents";
-import { InputName } from "../Components/AddProductsComponents/AddProductsComponents";
-import { InputPrice } from "../Components/AddProductsComponents/AddProductsComponents";
-import { BtnPublish } from "../Components/AddProductsComponents/AddProductsComponents";
-import { SelectMoneda } from "../Components/AddProductsComponents/AddProductsComponents";
-import { InputStock } from "../Components/AddProductsComponents/AddProductsComponents";
-import { AddBtnSourceImg } from "../Components/AddProductsComponents/AddProductsComponents";
-import ShowInfoProducts from "../Components/AddShowInfoProducts/AddShowInfoProducts";
+import AddShowProductsInfo from "../Components/AddShowProductsInfo/AddShowProductsInfo";
 import moment from 'moment';
+import {
+    // ShowItems,
+    ItemsMax,
+    ItemsLess,
+    InputName,
+    InputPrice,
+    BtnPublish,
+    SelectCurrency,
+    InputDescriptions,
+    AddBtnSourceImg,
+    InputPriceModal,
+
+} from "../Components/AddProductsComponents/AddProductsComponents";
+import OptionsProductModal from "../Components/AddOptionProductsModal/AddOpionsProductsModal";
 
 
 export default function AddProducts() {
@@ -22,25 +29,42 @@ export default function AddProducts() {
     const nativeGoBack = useNavigation();
     // --------------------------------
 
+
+
+
+    // Auto incrementar las cantidad de items.
+    const [itemsStock, setItemsStock] = useState(0);
+
+    const itemsMaxSend = () => {
+        setItemsStock(itemsStock + 1)
+    }
+    const ItemsLessSend = () => {
+        if (itemsStock >= 1) {
+            setItemsStock(itemsStock - 1)
+        }
+    }
+    // --------------------------------
+
+
     // useState para cargar las imagenes y devolverla a la database.
     const [image, setImage] = useState('IMG');
     // --------------------------------
 
-    
+
     const initialState = {
         imgProducts: "IMG",
-        nameProducts: "Name Products",
-        priceProducts: 0,
+        productsName: "Name Products",
+        productsPrice: '',
         productsStock: 0,
-        descriptionProducts: '',
-        selectMoneda: '',
+        productsDescription: '',
+        selectCurrency: '',
         inSold: false,
         createAdd: '',
     }
 
     // Aqui tenemos nuestro objeto useState
     const [newItem, setNewItem] = useState(initialState);
-    
+
     // --------------------------------
 
 
@@ -50,10 +74,8 @@ export default function AddProducts() {
         await addDoc(collection(database, 'LisProducts'), newItem);
 
         // setNewItem(initialState)
-        
+
         nativeGoBack.goBack();
-
-
         console.log(newItem.createAdd)
     }
     // --------------------------------
@@ -74,7 +96,9 @@ export default function AddProducts() {
             setImage(result.uri);
 
             setNewItem({
-                ...newItem, imgProducts: result.uri, createAdd: (moment().format('DD-MM-YYYY hh:mm:ss a'))
+                ...newItem, imgProducts: result.uri,
+                createAdd: (moment().format('DD-MM-YYYY hh:mm:ss a')),
+                productsStock: itemsStock
             });
 
         }
@@ -120,41 +144,61 @@ export default function AddProducts() {
                             btnImg={pickImage}
                         />
 
-                        <ShowInfoProducts
-                            showNameProduct={newItem.nameProducts}
-                            showPriceProducts={newItem.priceProducts}
-                            moneda={newItem.selectMoneda.value}
-                            itemsStock={newItem.productsStock}
-                            showDescriptProduct={newItem.descriptionProducts}
+                        <AddShowProductsInfo
+                            showNameProduct={newItem.productsName}
+                            showProductsPrice={newItem.productsPrice}
+                            currency={newItem.selectCurrency.value}
+                            itemsStock={itemsStock}
+                            showProductsDescription={newItem.productsDescription}
                         />
                     </View>
 
 
+                    <View style={StylesAddProducts.OptionsModal}>
+                        <OptionsProductModal
+                            valuePrice={newItem.productsPrice}
+                            priceModal={(textPrice) => setNewItem({ ...newItem, productsPrice: textPrice })}
+                        />
+                        
+                    </View>
 
                     <View>
                         <InputName
-                            inputNameProduct={(text) => setNewItem({ ...newItem, nameProducts: text })}
-                        />
-                    </View>
-
-                    <View style={StylesAddProducts.AddContPriceMoned}>
-                        <SelectMoneda
-                            selectOptions={(moned) => setNewItem({ ...newItem, selectMoneda: moned })}
+                            inputNameProduct={(text) => setNewItem({ ...newItem, productsName: text })}
                         />
                     </View>
 
                     <View>
                         <InputPrice
-                            inputPriceProduct={(textPrice) => setNewItem({ ...newItem, priceProducts: textPrice })}
+                            valuePriceModal={newItem.productsPrice}
+                            inputPriceProduct={(textPrice) => setNewItem({ ...newItem, productsPrice: textPrice })}
                         />
                     </View>
 
-                    <InputStock
+                    <View style={StylesAddProducts.AddContPriceMoned}>
+                        <SelectCurrency
+                            selectOptions={(moned) => setNewItem({ ...newItem, selectCurrency: moned })}
+                        />
+                    </View>
+                    <View>
+                        <View>
+                            <ItemsMax
+                                bntItemsMax={itemsMaxSend}
+                            />
+                        </View>
+                        <View>
+                            <ItemsLess
+                                bntItemsLess={ItemsLessSend}
+                            />
+                        </View>
+                    </View>
+
+                    {/* <InputStock
                         upIncrementStock={(stockText) => setNewItem({ ...newItem, productsStock: stockText })}
-                    />
+                    /> */}
 
                     <InputDescriptions
-                        descript={(textDescritp) => setNewItem({ ...newItem, descriptionProducts: textDescritp })}
+                        descript={(textDescritp) => setNewItem({ ...newItem, productsDescription: textDescritp })}
                     />
 
                     <BtnPublish
