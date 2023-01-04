@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Text, View, Image, SafeAreaView, ScrollView, RefreshControl } from "react-native";
+import { Text, View, Image, SafeAreaView, ScrollView, RefreshControl, StyleSheet } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import StylesAddProducts from "../Css/styleSectionAddProduts";
 import { database } from "../Config/Config-Fb";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native"
 import AddShowProductsInfo from "../Components/AddShowProductsInfo/AddShowProductsInfo";
+import { InputOfertPrice } from "../Components/AddProductsComponents/AddProductsComponents";
 import moment from 'moment';
 import {
     // ShowItems,
@@ -17,7 +18,10 @@ import {
     SelectCurrency,
     InputDescriptions,
     AddBtnSourceImg,
-    InputPriceModal,
+    // OfertPrice,
+    // TimeOupOfert,
+    // InputPriceModal,
+    // InputPriceOfertModal,
 
 } from "../Components/AddProductsComponents/AddProductsComponents";
 import OptionsProductModal from "../Components/AddOptionProductsModal/AddOpionsProductsModal";
@@ -28,8 +32,6 @@ export default function AddProducts() {
     // Uso de la navegacion para volver atra.
     const nativeGoBack = useNavigation();
     // --------------------------------
-
-
 
 
     // Auto incrementar las cantidad de items.
@@ -51,39 +53,40 @@ export default function AddProducts() {
     // --------------------------------
 
 
-    const initialState = {
+
+    // Aqui tenemos nuestro objeto useState
+    const [newItem, setNewItem] = useState({
         imgProducts: "IMG",
         productsName: "Name Products",
-        productsPrice: '',
+        timeOup: '',
+        priceNow: '',
+        priceOfert: '',
         productsStock: 0,
         productsDescription: '',
         selectCurrency: '',
         inSold: false,
         createAdd: '',
-    }
-
-    // Aqui tenemos nuestro objeto useState
-    const [newItem, setNewItem] = useState(initialState);
-
+    });
     // --------------------------------
 
 
+//    const [dateNow, setDateNow] = useState('');
+   
 
     // Introdicion de informacion a la database.
     const onSend = async () => {
         await addDoc(collection(database, 'LisProducts'), newItem);
 
-        // setNewItem(initialState)
-
         nativeGoBack.goBack();
-        console.log(newItem.createAdd)
+        console.log(newItem.createAdd);
+
+        
     }
     // --------------------------------
 
 
-    // Fucntions para agragar imagen de la galerria
+    // Functions para agregar imagen de la galerria
     const pickImage = async () => {
-        // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
@@ -98,13 +101,12 @@ export default function AddProducts() {
             setNewItem({
                 ...newItem, imgProducts: result.uri,
                 createAdd: (moment().format('DD-MM-YYYY hh:mm:ss a')),
-                productsStock: itemsStock
+                productsStock: itemsStock,
             });
 
         }
     };
     // --------------------------------
-
 
     // Para refrescar el home de la app.
     const wait = (timeout) => {
@@ -130,8 +132,8 @@ export default function AddProducts() {
                             refreshing={refreshing}
                             onRefresh={onRefresh}
                         />
-                    }
-                >
+                    } >
+
                     <View style={StylesAddProducts.AddContInfoHead}>
                         <Text style={StylesAddProducts.AddProdTitle}>Add Products</Text>
 
@@ -143,44 +145,37 @@ export default function AddProducts() {
                         <AddBtnSourceImg
                             btnImg={pickImage}
                         />
+                        {/* <OfertPrice/> */}
+                        {/* <TimeOupOfert
+                            timeOup={newItem.timeOup}
+                        /> */}
+
+                        {/* <InputOfertPrice
+                            valuePriceOfertModal={newItem.priceOfert}
+                            inputPriceOfert={(textPriceOfert) => setNewItem({ ...newItem, priceOfert: textPriceOfert })}
+                        /> */}
 
                         <AddShowProductsInfo
                             showNameProduct={newItem.productsName}
-                            showProductsPrice={newItem.productsPrice}
-                            currency={newItem.selectCurrency.value}
-                            itemsStock={itemsStock}
+                            showProductsPrice={newItem.priceNow}
+                            showPriceOfert={newItem.priceOfert}
+                            currency={newItem.selectCurrency}
+                            itemsShowStock={itemsStock}
                             showProductsDescription={newItem.productsDescription}
                         />
                     </View>
 
-
                     <View style={StylesAddProducts.OptionsModal}>
                         <OptionsProductModal
-                            valuePrice={newItem.productsPrice}
-                            priceModal={(textPrice) => setNewItem({ ...newItem, productsPrice: textPrice })}
-                        />
-                        
-                    </View>
-
-                    <View>
-                        <InputName
-                            inputNameProduct={(text) => setNewItem({ ...newItem, productsName: text })}
+                            valuePriceModal={newItem.priceNow}
+                            priceModal={(textPrice) => setNewItem({ ...newItem, priceNow: textPrice })}
+                            valuePriceOfertModal={newItem.priceOfert}
+                            showPriceOfert={(textPrice) => setNewItem({ ...newItem, priceOfert: textPrice })}
                         />
                     </View>
 
-                    <View>
-                        <InputPrice
-                            valuePriceModal={newItem.productsPrice}
-                            inputPriceProduct={(textPrice) => setNewItem({ ...newItem, productsPrice: textPrice })}
-                        />
-                    </View>
-
-                    <View style={StylesAddProducts.AddContPriceMoned}>
-                        <SelectCurrency
-                            selectOptions={(moned) => setNewItem({ ...newItem, selectCurrency: moned })}
-                        />
-                    </View>
-                    <View>
+                    
+                    <View style={StylesAddProducts.contBtnStock}>
                         <View>
                             <ItemsMax
                                 bntItemsMax={itemsMaxSend}
@@ -192,6 +187,29 @@ export default function AddProducts() {
                             />
                         </View>
                     </View>
+
+
+
+                    <View>
+                        <InputName
+                            inputNameProduct={(text) => setNewItem({ ...newItem, productsName: text})}
+                        />
+                    </View>
+
+                    <View>
+                        <InputPrice
+                            valuePriceModal={newItem.priceNow}
+                            inputPriceProduct={(textPrice) => setNewItem({ ...newItem, priceNow: textPrice })}
+                        />
+                    </View>
+
+                    <View style={StylesAddProducts.AddContPriceMoned}>
+                        <SelectCurrency
+                            selectOptions={(currenc) => setNewItem({ ...newItem, selectCurrency: currenc })}
+                        />
+                    </View>
+                    
+                    
 
                     {/* <InputStock
                         upIncrementStock={(stockText) => setNewItem({ ...newItem, productsStock: stockText })}

@@ -40,6 +40,8 @@ const ShowModalDetails = (props) => {
 
                 <Text style={StyleModal.productsStock}>Items: {props.productsStock}</Text>
                 <Text style={StyleModal.productsPrice}>{props.isSold}</Text>
+                <Text>{props.selectCurrency}{props.priceNow}</Text>
+                <Text>{props.selectCurrency}{props.priceOfert}</Text>
 
                 <View>
                   <Text style={StyleModal.titleProductsDescrip}>Descripcion:</Text>

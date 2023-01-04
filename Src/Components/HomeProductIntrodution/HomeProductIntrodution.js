@@ -18,7 +18,8 @@ export default function Products({
     id,
     imgProducts,
     productsName,
-    productsPrice,
+    priceNow,
+    priceOfert,
     productsStock,
     productsDescription,
     selectCurrency,
@@ -26,9 +27,6 @@ export default function Products({
     createAdd
 
 }) {
-
-    // console.log({uri: imgProducts})
-
     // Function para marcar como vendido los productos.
     const onEdit = () => {
         const docRef = doc(database, 'LisProducts', id)
@@ -67,7 +65,10 @@ export default function Products({
                 </View>
 
                 <View>
-                    <Text style={StylesCss.productsPrice}>{selectCurrency.value}{productsPrice}</Text>
+                    <Text style={StylesCss.productsPrice}>{selectCurrency}{priceNow}</Text>
+                </View>
+                <View>
+                    <Text style={StylesCss.productsPrice}>{selectCurrency}{priceOfert}</Text>
                 </View>
 
                 <View>
@@ -75,6 +76,9 @@ export default function Products({
                         imgProducts={imgProducts}
                         // viewDetailsProducts={() => viewDitails}
                         productsStock={productsStock}
+                        selectCurrency={selectCurrency}
+                        priceNow={priceNow}
+                        priceOfert={priceOfert}
                         productsDescription={productsDescription}
                         createAdd={createAdd}
                     />

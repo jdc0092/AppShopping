@@ -1,11 +1,12 @@
 
 import { StyleSheet } from 'react-native';
+import { block } from 'react-native-reanimated';
 
 const StylesAddProducts = StyleSheet.create({
 
     AddContContainer: {
         padding: 15,
-        backgroundColor: "#fff" 
+        backgroundColor: "#fff"
     },
 
     AddContProduts: {
@@ -26,12 +27,12 @@ const StylesAddProducts = StyleSheet.create({
         fontWeight: '700'
     },
 
-    AddContPriceMoned:{
+    AddContPriceMoned: {
         // flexDirection: 'row',
         // zIndex: 9,
     },
-    
-    OptionsModal:{
+
+    OptionsModal: {
         alignItems: 'flex-end',
         marginBottom: 15,
     },
@@ -41,13 +42,13 @@ const StylesAddProducts = StyleSheet.create({
         alignItems: 'center',
         borderWidth: 1,
     },
-    
+
     AddImgProducts: {
         width: 280,
         height: 280,
     },
 
-    AddContBtnMaxMen:{
+    AddContBtnMaxMen: {
         flexWrap: 'wrap',
         flexDirection: 'column'
     },
@@ -68,7 +69,23 @@ const StylesAddProducts = StyleSheet.create({
         marginBottom: 15
     },
 
-    AddSelectInput:{
+    linerThrough: {
+        textDecorationLine: "line-through",
+        color: "#ccc",
+        fontSize: 18,
+        textAlign: 'center',
+        fontWeight: '500',
+        fontSize: 25,
+    },
+
+    displaiBlock: {
+        display: 'flex'
+    },
+
+    displaiNone: {
+        display: 'none'
+    },
+    AddSelectInput: {
         marginBottom: 15
     },
 
@@ -80,7 +97,7 @@ const StylesAddProducts = StyleSheet.create({
         marginBottom: 15
     },
 
-    inputStock:{
+    inputStock: {
         width: 60,
         textAlign: 'center'
     },
@@ -99,7 +116,7 @@ const StylesAddProducts = StyleSheet.create({
     },
 
 
-    DesCription:{
+    DesCription: {
         marginBottom: 15,
         fontWeight: '700',
         textAlign: "center",
@@ -137,28 +154,40 @@ const StylesAddProducts = StyleSheet.create({
     },
 
 
+    contBtnStock:{
+        flexDirection: 'row'
+    },
 
 
-    contBtns:{
+
+
+    contBtns: {
         flsexDirection: "row"
-        
-      },
-    
-      ButtonMax: {
+
+    },
+
+    ButtonMax: {
         color: "red",
         marginBottom: 15,
         alignItems: "center"
-      },
-      
-      ButtonMenos:{
+    },
+
+    ButtonMenos: {
         backgroundColor: '#ccc',
         marginBottom: 15,
         backgroundColor: 'orange',
         alignItems: "center",
         display: "flex"
-      },
+    },
 
 
+
+    containers: {
+        flex: 1,
+        padding: 20,
+        paddingTop: 15,
+        justifyContent: 'flex-start',
+    },
 
 
     dropdown: {
@@ -166,24 +195,24 @@ const StylesAddProducts = StyleSheet.create({
         height: 50,
         borderBottomColor: 'gray',
         borderBottomWidth: 0.5,
-      },
-      icon: {
+    },
+    icon: {
         marginRight: 5,
-      },
-      placeholderStyle: {
+    },
+    placeholderStyle: {
         fontSize: 16,
-      },
-      selectedTextStyle: {
+    },
+    selectedTextStyle: {
         fontSize: 16,
-      },
-      iconStyle: {
+    },
+    iconStyle: {
         width: 20,
         height: 20,
-      },
-      inputSearchStyle: {
+    },
+    inputSearchStyle: {
         height: 40,
         fontSize: 16,
-      },
+    },
 
 });
 
