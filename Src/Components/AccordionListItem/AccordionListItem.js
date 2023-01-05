@@ -8,6 +8,7 @@ import {
     Easing,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import styleAccordionItem from '../../Css/styleAccordionItems';
 
 const AccordionListItem = ({ title, children }) => {
     const [open, setOpen] = useState(false);
@@ -49,16 +50,16 @@ const AccordionListItem = ({ title, children }) => {
     return (
         <>
             <TouchableWithoutFeedback onPress={() => toggleListItem()}>
-                <View style={styles.titleContainer}>
+                <View style={styleAccordionItem.titleContainer}>
                     <Text>{title}</Text>
                     <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }}>
                         <MaterialIcons name="keyboard-arrow-down" />
                     </Animated.View>
                 </View>
             </TouchableWithoutFeedback>
-            
-            <Animated.View style={[styles.bodyBackground, { height: bodyHeight }]}>
-                <View style={styles.bodyContainer}
+
+            <Animated.View style={[styleAccordionItem.bodyBackground, { height: bodyHeight }]}>
+                <View style={styleAccordionItem.bodyContainer}
                     onLayout={event => setBodySectionHeight(event.nativeEvent.layout.height)}>
                     {children}
                 </View>
@@ -68,26 +69,3 @@ const AccordionListItem = ({ title, children }) => {
 };
 export default AccordionListItem;
 
-const styles = StyleSheet.create({
-    bodyBackground: {
-        backgroundColor: '#EFEFEF',
-        overflow: 'hidden',
-    },
-    titleContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 15,
-        paddingLeft: 20,
-        borderTopWidth: 1,
-        borderBottomWidth: 1,
-        borderColor: '#EFEFEF',
-    },
-    bodyContainer: {
-        padding: 15,
-        paddingLeft: 20,
-        position: 'absolute',
-        bottom: 0,
-    },
-});

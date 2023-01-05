@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native"
 import AddShowProductsInfo from "../Components/AddShowProductsInfo/AddShowProductsInfo";
 import { InputOfertPrice } from "../Components/AddProductsComponents/AddProductsComponents";
 import moment from 'moment';
+import OptionsProductModal from "../Components/AddOptionProductsModal/AddOpionsProductsModal";
 import {
     // ShowItems,
     ItemsMax,
@@ -24,7 +25,6 @@ import {
     // InputPriceOfertModal,
 
 } from "../Components/AddProductsComponents/AddProductsComponents";
-import OptionsProductModal from "../Components/AddOptionProductsModal/AddOpionsProductsModal";
 
 
 export default function AddProducts() {
@@ -70,8 +70,8 @@ export default function AddProducts() {
     // --------------------------------
 
 
-//    const [dateNow, setDateNow] = useState('');
-   
+    //    const [dateNow, setDateNow] = useState('');
+
 
     // Introdicion de informacion a la database.
     const onSend = async () => {
@@ -80,7 +80,7 @@ export default function AddProducts() {
         nativeGoBack.goBack();
         console.log(newItem.createAdd);
 
-        
+
     }
     // --------------------------------
 
@@ -164,7 +164,7 @@ export default function AddProducts() {
                             showProductsDescription={newItem.productsDescription}
                         />
                     </View>
-
+                    
                     <View style={StylesAddProducts.OptionsModal}>
                         <OptionsProductModal
                             valuePriceModal={newItem.priceNow}
@@ -174,17 +174,28 @@ export default function AddProducts() {
                         />
                     </View>
 
-                    
-                    <View style={StylesAddProducts.contBtnStock}>
-                        <View>
-                            <ItemsMax
-                                bntItemsMax={itemsMaxSend}
-                            />
-                        </View>
-                        <View>
-                            <ItemsLess
-                                bntItemsLess={ItemsLessSend}
-                            />
+                    <View style={StylesAddProducts.AddContPriceMoned}>
+                        <SelectCurrency
+                            selectOptions={(currenc) => setNewItem({ ...newItem, selectCurrency: currenc })}
+                        />
+                    </View>
+
+                    <View style={StylesAddProducts.containerOptions}>
+                        <View style={StylesAddProducts.AddContBtnMaxMen}>
+                            <View>
+                                <ItemsMax
+                                    bntItemsMax={itemsMaxSend}
+                                />
+                            </View>
+                            <View style={StylesAddProducts.counterStock}>
+                                <Text>{itemsStock}</Text>
+
+                            </View>
+                            <View>
+                                <ItemsLess
+                                    bntItemsLess={ItemsLessSend}
+                                />
+                            </View>
                         </View>
                     </View>
 
@@ -192,7 +203,7 @@ export default function AddProducts() {
 
                     <View>
                         <InputName
-                            inputNameProduct={(text) => setNewItem({ ...newItem, productsName: text})}
+                            inputNameProduct={(text) => setNewItem({ ...newItem, productsName: text })}
                         />
                     </View>
 
@@ -203,13 +214,7 @@ export default function AddProducts() {
                         />
                     </View>
 
-                    <View style={StylesAddProducts.AddContPriceMoned}>
-                        <SelectCurrency
-                            selectOptions={(currenc) => setNewItem({ ...newItem, selectCurrency: currenc })}
-                        />
-                    </View>
-                    
-                    
+
 
                     {/* <InputStock
                         upIncrementStock={(stockText) => setNewItem({ ...newItem, productsStock: stockText })}

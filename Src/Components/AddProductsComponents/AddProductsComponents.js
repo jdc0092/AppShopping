@@ -224,7 +224,7 @@ const ItemsMax = (props) => {
 const ItemsLess = (props) => {
   return (
     <View>
-      <TouchableOpacity onPress={props.bntItemsLess} style={StylesAddProducts.ButtonMax}>
+      <TouchableOpacity onPress={props.bntItemsLess} style={StylesAddProducts.ButtonLess}>
         <AntDesign name="minus" size={24} color="#000" />
       </TouchableOpacity>
     </View>
@@ -234,7 +234,7 @@ const ItemsLess = (props) => {
 
 const SelectCurrency = (props) => {
 
-  const [current, setCurrent] = useState();
+  const [current, setCurrent] = useState('Moneda');
 
   const currency = [
     {
@@ -248,15 +248,14 @@ const SelectCurrency = (props) => {
 
   return (
     <View style={StylesAddProducts.containers}>
-      <AccordionListItem title={'Divisas'}>
+      <AccordionListItem title={current}>
         {
           currency.map((item) => {
             return (
               <TouchableOpacity
                 key={item.divisa}
-                onPress={() => setCurrent(`${item.divisa} ${props.selectOptions(`${item.divisa}`)}`)}
+                onPress={(() => setCurrent(`${item.divisa}`) || props.selectOptions(`${item.divisa}`))}
               >
-
                 <Text>{item.divisa}</Text>
               </TouchableOpacity>
             );

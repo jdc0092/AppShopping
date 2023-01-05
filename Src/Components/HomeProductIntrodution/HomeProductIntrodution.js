@@ -48,7 +48,6 @@ export default function Products({
             {/* <Entypo style={StylesCss.btnAdd} name="circle-with-plus" size={50} color="black" onPress={() => navigation.navigate('AddProducts')} /> */}
 
             <View style={StylesCss.contProduts}>
-
                 <View style={StylesCss.contNameTop}>
                     <View>
                         <Text style={StylesCss.productsName}>{productsName}</Text>
@@ -74,7 +73,6 @@ export default function Products({
                 <View>
                     <ShowModalDetails
                         imgProducts={imgProducts}
-                        // viewDetailsProducts={() => viewDitails}
                         productsStock={productsStock}
                         selectCurrency={selectCurrency}
                         priceNow={priceNow}

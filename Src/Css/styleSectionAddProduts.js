@@ -49,8 +49,8 @@ const StylesAddProducts = StyleSheet.create({
     },
 
     AddContBtnMaxMen: {
-        flexWrap: 'wrap',
-        flexDirection: 'column'
+        alignItems: 'center',
+        flexDirection: 'row'
     },
 
     AddNameProducts: {
@@ -91,15 +91,10 @@ const StylesAddProducts = StyleSheet.create({
 
     AddTextInput: {
         borderRadius: 5,
-        borderWidth: 2,
-        borderColor: "#ccc",
+        borderWidth: 1,
+        borderColor: "#e3e3e3",
         padding: 10,
         marginBottom: 15
-    },
-
-    inputStock: {
-        width: 60,
-        textAlign: 'center'
     },
 
 
@@ -154,11 +149,28 @@ const StylesAddProducts = StyleSheet.create({
     },
 
 
-    contBtnStock:{
-        flexDirection: 'row'
+    containerOptions:{
+        width: '100%',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 15,
+        marginTop: 15,
     },
 
 
+    inputStock: {
+        width: 60,
+        textAlign: 'center'
+    },
+
+    counterStock:{
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 50,
+        height: 46,
+        borderColor: '#e3e3e3'
+    },
 
 
     contBtns: {
@@ -167,28 +179,27 @@ const StylesAddProducts = StyleSheet.create({
     },
 
     ButtonMax: {
-        color: "red",
-        marginBottom: 15,
-        alignItems: "center"
+        padding: 10,
+        alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#e3e3e3",
+    },
+
+    ButtonLess: {
+        padding: 10,
+        alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#e3e3e3",
+        
     },
 
     ButtonMenos: {
         backgroundColor: '#ccc',
-        marginBottom: 15,
+        // marginBottom: 15,
         backgroundColor: 'orange',
         alignItems: "center",
         display: "flex"
     },
-
-
-
-    containers: {
-        flex: 1,
-        padding: 20,
-        paddingTop: 15,
-        justifyContent: 'flex-start',
-    },
-
 
     dropdown: {
         margin: 16,

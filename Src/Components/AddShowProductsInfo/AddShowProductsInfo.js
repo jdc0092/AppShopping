@@ -32,14 +32,3 @@ const AddShowProductsInfo = (props) => {
 }
 
 export default AddShowProductsInfo;
-
-
-// const styleOfert = StyleSheet.create({
-
-//     linerThrough: {
-//         textDecorationLine: "line-through",
-//         color: "#ccc",
-//         fontSize: 18
-//     },
-
-// });
